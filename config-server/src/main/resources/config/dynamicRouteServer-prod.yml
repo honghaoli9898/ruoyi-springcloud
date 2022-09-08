@@ -1,0 +1,46 @@
+spring:
+  datasource:
+    dynamic:
+      primary: master
+      datasource:
+        master:
+          url: jdbc:mysql://127.0.0.1:3306/sdps?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
+          username: root
+          password: 123456
+          driver-class-name: com.mysql.cj.jdbc.Driver
+mybatis-plus:
+  type-aliases-package: com.sdps.dynamicroute.entity
+  mapper-locations:
+    - classpath*:mapper/*.xml
+sdps:
+  security:
+    permit-all_urls:
+      - /admin-api/system/user/login
+  #多租户配置
+  tenant:
+    enable: false
+#    ignore-urls:
+#      - /admin-api/system/user/login
+    ignoreTables:
+      - system_tenant
+      - system_tenant_package
+      - system_dict_data
+      - system_dict_type
+      - system_error_code
+      - system_menu
+      - system_sensitive_word
+      - oauth_client_details
+      - system_sms_channel
+      - system_sms_template
+      - system_sms_log
+      - dynamic_version
+      - gateway_routes
+    ignoreSqls:
+      # 用户关联角色时，显示所有角色
+      - com.sdps.user.mybatis.mapper.SysRoleMapper.findRolesByExample
+      - com.seaboxdata.sdps.user.mybatis.mapper.SysMenuMapper.selectList
+  access-log: # 访问日志的配置项
+    enable: false
+  error-code: # 错误码相关配置项
+    enable: false
+  demo: false # 关闭演示模式

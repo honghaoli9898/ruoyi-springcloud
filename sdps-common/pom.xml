@@ -1,0 +1,31 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.sdps.framework</groupId>
+		<artifactId>sdps-framework</artifactId>
+		<version>${revision}</version>
+	</parent>
+	<artifactId>sdps-common</artifactId>
+	<version>${revision}</version>
+	<packaging>pom</packaging>
+	<modules>
+		<module>common-core</module>
+		<module>db-spring-boot-starter</module>
+		<module>log-spring-boot-starter</module>
+		<module>redis-spring-boot-starter</module>
+		<module>loadbalancer-spring-boot-starter</module>
+		<module>auth-client-spring-boot-starter</module>
+		<module>banner-spring-boot-starter</module>
+		<module>error-code-spring-boot-starter</module>
+		<module>web-spring-boot-starter</module>
+		<module>captcha-spring-boot-starter</module>
+		<module>api-crypto-spring-boot-starter</module>
+		<module>data-permission-spring-boot-starter</module>
+		<module>biz-dict-spring-boot-starter</module>
+        <module>security-spring-boot-starter</module>
+        <module>biz-social-spring-boot-starter</module>
+        <module>biz-sms-spring-boot-starter</module>
+    </modules>
+	<name>sdps-common</name>
+</project>

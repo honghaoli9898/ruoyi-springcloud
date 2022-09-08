@@ -1,0 +1,10 @@
+org.springframework.context.ApplicationContextInitializer=\
+com.sdps.common.log.config.TtlMDCAdapterInitializer
+
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.sdps.common.log.config.LogAutoConfigure,\
+com.sdps.common.log.service.impl.LoggerAuditServiceImpl,\
+com.sdps.common.log.service.impl.DbAuditServiceImpl,\
+com.sdps.common.log.aspect.AuditLogAspect,\
+com.sdps.common.log.trace.WebTraceFilter,\
+com.sdps.common.log.trace.FeignTraceInterceptor

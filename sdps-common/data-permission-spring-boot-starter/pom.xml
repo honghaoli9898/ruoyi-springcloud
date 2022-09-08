@@ -1,0 +1,38 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.sdps.framework</groupId>
+		<artifactId>sdps-common</artifactId>
+		<version>${revision}</version>
+	</parent>
+	<artifactId>data-permission-spring-boot-starter</artifactId>
+	<version>${revision}</version>
+	<dependencies>
+		<dependency>
+			<groupId>com.sdps.framework</groupId>
+			<artifactId>common-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<!-- DB 相关 -->
+		<dependency>
+			<groupId>com.sdps.framework</groupId>
+			<artifactId>db-spring-boot-starter</artifactId>
+			<optional>true</optional>
+		</dependency>
+
+		<!-- 业务组件 -->
+		<dependency>
+			<groupId>com.sdps.framework</groupId>
+			<artifactId>module-system-api</artifactId>
+			<optional>true</optional>
+			<version>${revision}</version>
+		</dependency>
+
+	</dependencies>
+
+</project>

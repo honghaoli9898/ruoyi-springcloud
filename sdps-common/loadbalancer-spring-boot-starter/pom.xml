@@ -1,0 +1,31 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.sdps.framework</groupId>
+		<artifactId>sdps-common</artifactId>
+		<version>${revision}</version>
+	</parent>
+	<artifactId>loadbalancer-spring-boot-starter</artifactId>
+	<version>${revision}</version>
+	<name>loadbalancer-spring-boot-starter</name>
+	<dependencies>
+		<dependency>
+			<groupId>com.sdps.framework</groupId>
+			<artifactId>common-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-loadbalancer</artifactId>
+		</dependency>
+	</dependencies>
+</project>

@@ -1,0 +1,188 @@
+resilience4j:
+  ratelimiter:
+    instances:
+      backendA:
+        limit-for-period: 1 # 每个周期内，允许的请求数。默认为 50
+        limit-refresh-period: 60s # 每个周期的时长，单位：微秒。默认为 500
+        timeout-duration: 1s # 被限流时，阻塞等待的时长，单位：微秒。默认为 5s
+        register-health-indicator: true # 是否注册到健康监测
+
+jasypt:
+  encryptor:
+    password: yuanma # 加解密的秘钥
+server:
+  max-http-header-size: 4048576
+  tomcat:
+    max-http-post-size: 20MB
+management:
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      enabled: true
+    env:
+      enabled: false
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: "*"
+        exclude: env
+
+spring:
+  security:
+    basic:
+      path: /actuator
+  datasource:
+    druid:
+      initialSize: 2
+      minIdle: 1
+      maxActive: 5
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: select 1
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      use-global-data-source-stat: true
+      connect-properties:
+        druid.stat.mergeSql: true
+        druid.stat.slowSqlMillis: 5000
+       # config.decrypt: true
+       # config.decrypt.key: ${secret.public.key}
+      web-stat-filter:
+        enabled: true
+        url-pattern: "/*"
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+        session-stat-max-count: 1000
+        profile-enabled: true
+        session-stat-enabled: false
+      stat-view-servlet:
+        enabled: true
+        url-pattern: "/druid/*"
+        reset-enable: false
+        login-username: admin
+        login-password: admin
+        allow: 
+    dynamic:
+      druid:
+        initial-size: 2
+        max-active: 5
+        min-idle: 1
+        max-wait: 60000
+        time-between-eviction-runs-millis: 60000
+        min-evictable-idle-time-millis: 300000
+        validation-query: select 1
+        test-while-idle: true
+        test-on-borrow: false
+        test-on-return: false
+       # pool-prepared-statements: true
+        filters: stat,slf4j
+       # max-pool-prepared-statement-per-connection-size: 20
+        use-global-data-source-stat: true
+        connect-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+        web-stat-filter:
+          enabled: true
+          url-pattern: /*
+          exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico, /druid/*"
+          session-stat-enable: true
+          session-stat-max-count: 1000
+        stat-view-servlet:
+          enabled: true
+          url-pattern: /druid/*
+          reset-enable: false
+          login-username: admin
+          login-password: admin
+          allow: 
+
+  #redis配置
+  redis:
+    host: 10.1.2.16
+    port: 6379
+    password: 123456
+    timeout: 10000ms
+    database: 10
+    lettuce:
+      pool:
+        max-active: 8
+        max-wait: -1ms
+        max-idle: 8
+        min-idle: 0
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 100MB
+      file-size-threshold: 1MB
+  messages:
+    basename: i18n/messages
+    cache-duration: 3600s
+    encoding: UTF-8
+  jackson:
+    serialization:
+      write-dates-as-timestamps: true # 设置 Date 的格式，使用时间戳
+      write-date-timestamps-as-nanoseconds: false # 设置不使用 nanoseconds 的格式。例如说 1611460870.401，而是直接 1611460870401
+      write-durations-as-timestamps: true # 设置 Duration 的格式，使用时间戳
+      fail-on-empty-beans: false # 允许序列化无属性的 Bean
+
+ribbon:
+  ServerListRefreshInterval: 15000
+  ConnectTimeout: 30000
+  ReadTimeout: 30000
+  OkToRetryOnAllOperations: true
+  MaxAutoRetries: 1
+  MaxAutoRetriesNextServer: 0
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true # 虽然默认为 true ，但是还是显示去指定下。
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+  global-config:
+    db-config:
+      id-type: NONE # “智能”模式，基于 IdTypeEnvironmentPostProcessor + 数据源的类型，自动适配成 AUTO、INPUT 模式。
+#      id-type: AUTO # 自增 ID，适合 MySQL 等直接自增的数据库
+#      id-type: INPUT # 用户输入 ID，适合 Oracle、PostgreSQL、Kingbase、DB2、H2 数据库
+#      id-type: ASSIGN_ID # 分配 ID，默认使用雪花算法。注意，Oracle、PostgreSQL、Kingbase、DB2、H2 数据库时，需要去除实体类上的 @KeySequence 注解
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+  type-aliases-package: com.sdps.module.*.dal.dataobject
+  cache-enabled: false
+#  mapper-locations: classpath:/mapper/*Mapper.xml,classpath:/mappers/*Mapper.xml
+
+
+
+feign:
+  sentinel:
+    enabled: true
+  hystrix:
+    enabled: true
+  httpclient:
+    enabled: true
+    max-connections: 1000
+    max-connections-per-route: 100
+  client:
+    config:
+      default:
+        connectTimeout: 60000
+        readTimeout: 60000
+        loggerLevel: basic
+      feignName:
+        connectTimeout: 30000
+        readTimeout: 30000
+#  compression:
+#    request:
+#      enabled: true
+#      mime-types: text/xml,application/xml,application/json
+#      min-request-size: 2048
+#    response:
+#      enabled: true
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 30000
+api:
+  crypto:
+    charset: utf-8
+    encoding-type: base64
+    symmetric:
+      AES: 1324567899999999
+      DESede: 1324567899999999
+      DES: 13245678

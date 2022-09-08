@@ -1,0 +1,3 @@
+com.sdps.common.captcha.service.impl.BlockPuzzleCaptchaServiceImpl
+com.sdps.common.captcha.service.impl.ClickWordCaptchaServiceImpl
+com.sdps.common.captcha.service.impl.DefaultCaptchaServiceImpl

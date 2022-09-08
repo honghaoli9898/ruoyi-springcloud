@@ -1,0 +1,9 @@
+org.springframework.context.ApplicationContextInitializer=\
+   com.sdps.common.mybatis.config.IdTypeEnvironmentApplicationContextInitializer
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.sdps.common.tenant.config.TenantAutoConfiguration,\
+  com.sdps.common.datasource.config.DataSourceAutoConfiguration,\
+  com.sdps.common.mybatis.config.MybatisAutoConfiguration
+
+#org.springframework.boot.env.EnvironmentPostProcessor=\
+#  com.sdps.common.mybatis.config.IdTypeEnvironmentPostProcessor

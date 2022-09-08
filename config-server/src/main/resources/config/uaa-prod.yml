@@ -1,0 +1,116 @@
+spring:    
+  datasource:
+    dynamic:
+      primary: master
+      datasource:
+        master:
+          url: jdbc:mysql://127.0.0.1:3306/sdps?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
+          username: root
+          password: 123456
+          driver-class-name: com.mysql.cj.jdbc.Driver
+      druid:
+        filters: stat,slf4j,wall
+mybatis-plus:
+  type-aliases-package: com.spds.uaa.oauth.model
+  mapper-locations:
+    - classpath*:com/sdps/uaa/oauth/mapper/*.xml
+
+
+sdps:
+  swagger:
+    enable: false
+  xss:
+    enable: false
+    excludeUrls:
+      - /oauth/token
+  error-code:
+    enable: true
+    constants-class-list:
+      - com.sdps.module.uaa.oauth.errorcode.ErrorCodeConstants
+
+  oauth2:
+    token:
+      store:
+        type: redis
+  security:
+    cas:
+      serverUrl: https://10.1.2.5:17003/cas
+    code:
+      # 忽略验证码的应用编号
+      ignoreClientCode: app
+    auth:
+      # 开启统一登出
+      unifiedLogout: false
+      # 同账号登录互踢
+      isSingleLogin: true  
+      isShareToken: true
+      onlyOneLogin: false
+  tenant: # 多租户相关配置项
+    enable: true
+    ignore-urls:
+      - /validata/captcha/** # 基于名字获取租户，不许带租户编号
+      - /validata/code/** # 获取图片验证码，和租户无关
+      - /validata/smsCode/**
+    ignore-tables:
+      - system_tenant
+      - system_tenant_package
+      - system_dict_data
+      - system_dict_type
+      - system_error_code
+      - system_menu
+      - system_sensitive_word
+      - oauth_client_details
+      - system_sms_channel
+      - system_sms_template
+      - system_sms_log
+  access-log: # 访问日志的配置项
+    enable: false
+
+aj:
+  captcha:
+    jigsaw: classpath:images/jigsaw
+    pic-click: classpath:images/pic-click
+    cache-type: redis
+    type: default
+#    water-mark: 
+#    water-font: \u5b8b\u4f53
+#    font-type: \u5b8b\u4f53
+    slip-offset: 5
+    aes-status: true
+    interference-options: 1
+    font-style: 1
+    font-size: 25
+    history-data-clear-enable: true
+    req-frequency-limit-enable: true
+    req-get-lock-limit: 5
+    req-get-lock-seconds: 360
+    req-get-minute-limit: 30
+    req-check-minute-limit: 60
+    req-verify-minute-limit: 60
+justauth:
+  enabled: true
+  type:
+    DINGTALK: # 钉钉
+      client-id: dingvrnreaje3yqvzhxg
+      client-secret: i8E6iZyDvZj51JIb0tYsYfVQYOks9Cq1lgryEjFRqC79P3iJcrxEwT6Qk2QvLrLI
+      ignore-check-redirect-uri: true
+    WECHAT_ENTERPRISE: # 企业微信
+      client-id: wwd411c69a39ad2e54
+      client-secret: 1wTb7hYxnpT2TUbIeHGXGo7T0odav1ic10mLdyyATOw
+      agent-id: 1000004
+      ignore-check-redirect-uri: true
+    WECHAT_MINI_APP: # 微信小程序
+      client-id: ${wx.miniapp.appid}
+      client-secret: ${wx.miniapp.secret}
+      ignore-check-redirect-uri: true
+      ignore-check-state: true # 微信小程序，不会使用到 state，所以不进行校验
+
+  cache:
+    type: REDIS
+    prefix: 'social_auth_state:' # 缓存前缀，目前只对 Redis 缓存生效，默认 JUSTAUTH::STATE::
+    timeout: 24h # 超时时长，目前只对 Redis 缓存生效，默认 3 分钟
+wx: # 参见 https://github.com/Wechat-Group/WxJava/blob/develop/spring-boot-starters/wx-java-mp-spring-boot-starter/README.md 文档
+  mp:
+    # 公众号配置(必填)
+    app-id: wx041349c6f39b268b
+    secret: 5abee519483bc9f8cb37ce280e814bd0

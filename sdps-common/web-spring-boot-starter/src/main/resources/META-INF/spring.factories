@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.sdps.common.apilog.config.ApiLogAutoConfiguration,\
+  com.sdps.common.jackson.config.JacksonAutoConfiguration,\
+  com.sdps.common.swagger.config.SwaggerAutoConfiguration,\
+  com.sdps.common.web.config.WebAutoConfiguration
