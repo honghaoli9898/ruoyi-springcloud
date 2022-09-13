@@ -45,10 +45,10 @@ public class ClientArgumentResolver implements HandlerMethodArgumentResolver {
                                   NativeWebRequest nativeWebRequest,
                                   WebDataBinderFactory webDataBinderFactory) {
         HttpServletRequest request = nativeWebRequest.getNativeRequest(HttpServletRequest.class);
-        String clientId = request.getHeader(SecurityConstants.TENANT_HEADER);
+        String clientId = request.getHeader(SecurityConstants.TENANT_ID_HEADER);
         if (StrUtil.isBlank(clientId)) {
             log.warn("resolveArgument error clientId is empty");
         }
-        return clientId;
+        return Integer.valueOf(clientId);
     }
 }

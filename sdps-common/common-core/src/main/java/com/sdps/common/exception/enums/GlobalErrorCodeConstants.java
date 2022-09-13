@@ -42,6 +42,13 @@ public interface GlobalErrorCodeConstants {
 	
 	ErrorCode IDEMPOTENCY_EXCEPTION = new ErrorCode(920, "幂等错误{}");
 
+	ErrorCode FILE_DOWNLOAD_EXCEPTION = new ErrorCode(800, "文件下载错误{}");
+	ErrorCode FILE_TRANSFORM_EXCEPTION = new ErrorCode(801, "文件转换错误{}");
+	ErrorCode FILE_NOT_EXISIT_EXCEPTION = new ErrorCode(802, "文件为空或不存在");
+	ErrorCode FILE_RESPONSE_EXCEPTION = new ErrorCode(803, "文件响应报错");
+	ErrorCode FILE_COPY_EXCEPTION = new ErrorCode(804, "文件复制报错{}");
+
+
 	
 	/**
 	 * 是否为服务端错误，参考 HTTP 5XX 错误码段

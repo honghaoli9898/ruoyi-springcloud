@@ -1,23 +1,10 @@
 package com.sdps.common.constant;
 
-import cn.hutool.core.util.IdUtil;
-
 /**
  * Security 权限常量
  *
  */
 public interface SecurityConstants {
-	String SSO_PASSWORD = "sso".concat(IdUtil.fastSimpleUUID());
-
-	String KDC_KEYTAB_PATH = "/kdc";
-
-	String USER_SYNC_KEYTAB_PATH = "/usersync";
-
-	String ITEM_KEYTAB_PATH = "/item";
-
-	String SEABOX_KEYTAB_PATH = "/seabox";
-
-	String SDPS_USER_PRINCIPAL_TYPE = "SDPS";
 
 	String ACCESS_BAK = "access_bak:";
 
@@ -32,10 +19,6 @@ public interface SecurityConstants {
 	Long LIMIT_TIME = 300L;
 
 	Long LIMIT_COUNT = 5L;
-	/**
-	 * 用户信息分隔符
-	 */
-	String USER_SPLIT = ":";
 
 	/**
 	 * 用户信息头
@@ -152,10 +135,7 @@ public interface SecurityConstants {
 	 * 验证码文字大小
 	 */
 	String DEFAULT_IMAGE_FONT_SIZE = "30";
-	/**
-	 * zlt公共前缀
-	 */
-	String ZLT_PREFIX = "zlt:";
+
 	/**
 	 * 缓存client的redis key，这里是hash结构存储
 	 */
