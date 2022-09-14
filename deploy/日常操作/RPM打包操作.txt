@@ -1,0 +1,87 @@
+rpm包路径
+/data/HDP/centos7/3.1.5.0-152/ranger
+
+
+解压rpm
+rpm2cpio ranger_3_0_1_0_187-admin-1.1.0.3.0.1.0-187.x86_64.rpm | cpio -idv
+rpm2cpio ranger_3_1_5_0_152-atlas-plugin-1.2.0.3.1.5.0-152.x86_64.rpm | cpio -idv
+rpm2cpio ranger_3_1_5_0_152-hbase-plugin-1.2.0.3.1.5.0-152.x86_64.rpm | cpio -idv
+rpm2cpio ranger_3_1_5_0_152-hive-plugin-1.2.0.3.1.5.0-152.x86_64.rpm | cpio -idv
+
+
+rpm2cpio  | cpio -idv
+
+
+提取spec
+rpmrebuild --package --notest-install --spec-only ranger-admin.spec ranger_3_0_1_0_187-admin-1.1.0.3.0.1.0-187.x86_64.rpm
+rpmrebuild --package --notest-install --spec-only ranger-atlas-plugin.spec 
+rpmrebuild --package --notest-install --spec-only ranger-hbase-plugin.spec 
+rpmrebuild --package --notest-install --spec-only ranger-hdfs-plugin.spec 
+rpmrebuild --package --notest-install --spec-only ranger-hive-plugin.spec
+rpmrebuild --package --notest-install --spec-only ranger-kafka-plugin.spec
+rpmrebuild --package --notest-install --spec-only ranger-kms.spec
+rpmrebuild --package --notest-install --spec-only ranger-knox-plugin.spec
+rpmrebuild --package --notest-install --spec-only ranger-solr-plugin.spec
+rpmrebuild --package --notest-install --spec-only ranger-storm-plugin.spec
+
+
+rpmrebuild --package --notest-install --spec-only ranger-tagsync.spec
+rpmrebuild --package --notest-install --spec-only ranger-usersync.spec
+rpmrebuild --package --notest-install --spec-only ranger-yarn-plugin.spec
+
+-------------------------------------------------------------------------------
+BUILD			源码解压后存放的目录
+RPMS			制作完成后的RPM存放目录
+BUILDROOT		虚拟安装目录，在整个install的过程中临时安装到此目录，把这个目录当做根来使用。所有在这个目录下的文件才是真正的目录文件，最后SPEC文件中有清理阶段，这个目录下的内容将被删除。
+
+SOURCES			存放源文件，配置文件，补丁文件等放置的目
+SPECS			src格式的RPM包目录
+SRPMS			存放SPEC文件，制作RPM包的目录
+-------------------------------------------------------------------------------
+
+#查看安装位置
+rpm -qpl ranger_3_1_5_0_152-admin-1.2.0.3.1.5.0-152.x86_64.rpm
+
+
+vim /root/rpmbuild/SPECS/ranger-admin.spec
+
+#执行打包命令
+rpmbuild  
+-ba 既生成src.rpm又生成二进制rpm 
+-bs 只生成src的rpm 
+-bb 只生二进制的rpm 
+-bp 执行到pre 
+-bc 执行到 build段 
+-bi 执行install段 
+-bl 检测有文件没包含 
+
+#打包ranger-admin
+rpmbuild -bb /root/rpmbuild/SPECS/ranger-admin.spec
+#打包ranger-atlas-plugin
+rpmbuild -bb /root/rpmbuild/SPECS/ranger-atlas-plugin.spec
+#打包ranger-hbase-plugin
+rpmbuild -bb /root/rpmbuild/SPECS/ranger-hbase-plugin.spec
+#打包ranger-hdfs-plugin
+rpmbuild -bb /root/rpmbuild/SPECS/ranger-hdfs-plugin.spec
+#打包ranger-hive-plugin
+rpmbuild -bb /root/rpmbuild/SPECS/ranger-hive-plugin.spec
+#打包ranger-kafka-plugin
+rpmbuild -bb /root/rpmbuild/SPECS/ranger-kafka-plugin.spec
+#打包ranger-kms
+rpmbuild -bb /root/rpmbuild/SPECS/ranger-kms.spec
+#打包ranger-knox-plugin
+rpmbuild -bb /root/rpmbuild/SPECS/ranger-knox-plugin.spec
+#打包ranger-solr-plugin
+rpmbuild -bb /root/rpmbuild/SPECS/ranger-solr-plugin.spec
+#打包ranger-storm-plugin
+rpmbuild -bb /root/rpmbuild/SPECS/ranger-storm-plugin.spec
+
+#打包ranger-storm-plugin
+rpmbuild -bb /root/rpmbuild/SPECS/ranger-sqoop-plugin.spec
+
+#打包ranger-tagsync
+rpmbuild -bb /root/rpmbuild/SPECS/ranger-tagsync.spec
+#打包ranger-usersync
+rpmbuild -bb /root/rpmbuild/SPECS/ranger-usersync.spec
+#打包ranger-yarn-plugin
+rpmbuild -bb /root/rpmbuild/SPECS/ranger-yarn-plugin.spec

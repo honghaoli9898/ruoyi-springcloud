@@ -1,0 +1,98 @@
+
+service krb5kdc status
+service kadmin status
+
+keytab文件目录:/etc/security/keytabs
+
+#master节点登录amdin管理员
+kinit admin/admin
+admin
+
+#查看主体
+kadmin -q "list_principals"
+密码:admin
+
+##通过keytab切换用户:
+kinit -kt keytab文件 主机名称
+kinit -kt /etc/security/keytabs/hdfs.headless.keytab hdfs-seabox4@HADOOP.COM 
+kinit -kt /etc/security/keytabs/hive.service.keytab  hive/slave1@HADOOP.COM
+kinit -kt /etc/security/keytabs/admin.keytab admin@HADOOP.COM
+
+kinit -kt admin.keytab admin@HADOOP.COM
+
+#新增票据
+kadmin -q "addprinc hdfs"
+kadmin -q "addprinc admin"
+#生成keytab文件
+##客户端
+kadmin -q "xst -k /etc/security/keytabs/hdfs.keytab hdfs@HADOOP.COM"
+kadmin -q "xst -k /etc/security/keytabs/admin.keytab admin@HADOOP.COM"
+
+kadmin -q "xst -k ./lihonghao.keytab lihonghao@HADOOP.COM"
+#查看票据
+klist
+
+#销毁凭证
+kdestroy
+
+
+
+
+kinit -kt /etc/security/keytabs/zk.service.keytab zookeeper/master@EXAMPLE.COM
+kinit -kt /etc/security/keytabs/zk.service.keytab zookeeper/slave3@EXAMPLE.COM
+
+kinit -kt /etc/security/keytabs/kafka.service.keytab kafka/master@EXAMPLE.COM
+
+
+
+-Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_jaas.conf
+
+-Djava.security.krb5.conf=/etc/krb5.conf -Djava.security.auth.login.config=/usr/hdp/2.5.0.0-1245/kafka3/config/kafka_jaas.conf
+
+
+./kafka-topics.sh --list --bootstrap-server master:6667
+
+1.查看topic
+./kafka-topics.sh --list --bootstrap-server master:6667
+2.创建topic话题
+./kafka-topics.sh --create --topic test0324 --bootstrap-server master:6667 -partitions 1 -replication-factor 1
+3.创建生产者
+./kafka-console-producer.sh --broker-list master:6667 --topic test0324
+
+4.创建消费者
+./kafka-console-consumer.sh --bootstrap-server master:6667 --topic test0324
+
+
+
+
+
+##老版kafka
+## topic列表查询
+/usr/hdp/2.5.0.0-1245/kafka/bin/kafka-topics.sh --zookeeper master:2181,slave1:2181,slave3:2181 --list
+##创建
+/usr/hdp/2.5.0.0-1245/kafka/bin/kafka-topics.sh --create --zookeeper master:2181,slave1:2181,slave3:2181 --replication-factor 2 --partitions 3 --topic oldtest004
+## 生产者
+/usr/hdp/2.5.0.0-1245/kafka/bin/kafka-console-producer.sh --broker-list master:6667,slave1:6667,slave3:6667 --topic oldtest002
+/usr/hdp/2.5.0.0-1245/kafka/bin/kafka-console-producer.sh --broker-list master:6667 --topic oldtest002 --producer.config
+
+
+## 消费者
+bin/kafka-console-consumer.sh --zookeeper master:2181,slave1:2181,slave3:2181 --topic oldtest004 --from-beginning --consumer.config 
+
+bin/kafka-console-consumer.sh --zookeeper master:2181 --topic oldtest004 --from-beginning --consumer.config config/consumer.properties
+
+
+https://blog.csdn.net/x1172031988/article/details/82852326
+
+
+# JVM performance options
+if [ -z "$KAFKA_JVM_PERFORMANCE_OPTS" ]; then
+  KAFKA_JVM_PERFORMANCE_OPTS="-server -XX:+UseG1GC -XX:MaxGCPauseMillis=20 -XX:InitiatingHeapOccupancyPercent=35 -XX:+DisableExplicitGC -Djava.awt.headless=true -Djava.security.krb5.conf=/etc/krb5.conf -Djava.security.auth.login.config=/usr/local/kafka_2.12-2.0.0/config/jaas.conf -Dzookeeper.sasl.client.username=zookeeper"
+fi
+#if [ -z "$KAFKA_JVM_PERFORMANCE_OPTS" ]; then
+#  KAFKA_JVM_PERFORMANCE_OPTS="-server -XX:+UseG1GC -XX:MaxGCPauseMillis=20 -XX:InitiatingHeapOccupancyPercent=35 -XX:+DisableExplicitGC -Djava.awt.headless=true"
+#fi
+
+if [ -z "$KAFKA_JVM_PERFORMANCE_OPTS" ]; then
+  KAFKA_JVM_PERFORMANCE_OPTS="-server -XX:+UseG1GC -XX:MaxGCPauseMillis=20 -XX:InitiatingHeapOccupancyPercent=35 -XX:+DisableExplicitGC -Djava.awt.headless=true -Djava.security.krb5.conf=/etc/krb5.conf -Djava.security.auth.login.config=/usr/local/kafka_2.12-2.0.0/config/jaas.conf -Dzookeeper.sasl.client.username=zookeeper"
+fi
