@@ -1,0 +1,5793 @@
+{
+	"info": {
+		"_postman_id": "bccd2590-2ab5-459d-8058-4ba45d622a5f",
+		"name": "xxqb",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "group",
+			"item": [
+				{
+					"name": "新增组",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"test\",\r\n    \"name\":\"test\",\r\n    \"desc\":\"test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/UC50/UC5001",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"UC50",
+								"UC5001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "更新组",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"1\",\r\n    \"name\":\"\",\r\n    \"code\":\"\",\r\n    \"desc\":\"test111\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/UC50/UC5002",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"UC50",
+								"UC5002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "删除组",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\"1\"]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/UC50/UC5003",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"UC50",
+								"UC5003"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查询组",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\": \"1\",\r\n    \"size\": \"10\",\r\n    \"param\": {\r\n        \"name\":\"\",\r\n        \"code\":\"\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/UC50/UC5004",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"UC50",
+								"UC5004"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "根据userId查询组",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"O\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/UC50/UC5005/1",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"UC50",
+								"UC5005",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "增加组项目关联角色",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"groupId\": \"1\",\r\n    \"itemId\":\"1\",\r\n    \"roleGroupItems\":[{\"roleId\":\"5\"}]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/UC50/UC5011",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"UC50",
+								"UC5011"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查询组关联用户",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\": \"1\",\r\n    \"size\": \"10\",\r\n    \"param\": {\r\n        \"id\":\"2\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/UC50/UC5007",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"UC50",
+								"UC5007"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改组关联用户",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"1\",\r\n    \"ids\":[\"1\",\"2\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/UC50/UC5008",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"UC50",
+								"UC5008"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查询组信息",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/UC50/UC5012",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"UC50",
+								"UC5012"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查询组已选用户",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/UC50/UC5014",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"UC50",
+								"UC5014"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "role",
+			"item": [
+				{
+					"name": "新增角色",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"test\",\r\n    \"name\":\"测试管理员\",\r\n    \"enabled\":\"true\",\r\n    \"desc\":\"测试管理员\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/UC40/UC4002",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"UC40",
+								"UC4002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "更新角色",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"6\",\r\n    \"name\":\"测试经理\",\r\n    \"enabled\":\"false\",\r\n    \"desc\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/UC40/UC4003",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"UC40",
+								"UC4003"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "删除角色",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\"6\"]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/UC40/UC4005",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"UC40",
+								"UC4005"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查询角色",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\": \"1\",\r\n    \"size\": \"10\",\r\n    \"param\": {\r\n       \"name\":\"系\",\r\n       \"type\":\"S\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/UC40/UC4001",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"UC40",
+								"UC4001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "根据userId查询角色",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    \"1\"\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/UC40/UC4004",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"UC40",
+								"UC4004"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查询角色关联的用户",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\": \"1\",\r\n    \"size\": \"10\",\r\n    \"roleId\":\"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/UC40/UC4006",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"UC40",
+								"UC4006"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查询角色列表",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\":\"\",\r\n    \"name\":\"\",\r\n    \"enabled\":\"\",\r\n    \"id\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/UC40/UC4007",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"UC40",
+								"UC4007"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "新增用户",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"user001\",\r\n    \"password\": \"haojiayou@12345\",\r\n    \"nickname\": \"user001\",\r\n    \"sex\": 1,\r\n    \"email\": \"1155896@qq.com\",\r\n    \"ids\":[\r\n        \"1\"\r\n    ],\r\n    \"clusterIds\":[1],\r\n    \"syncUser\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/UC30/UC3002",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"UC30",
+								"UC3002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "更新用户",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"1\",\r\n    \"nickname\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/UC30/UC3015",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"UC30",
+								"UC3015"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "删除用户",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    \"2\"\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/UC30/UC3003",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"UC30",
+								"UC3003"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查询用户",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\":\"1\",\r\n    \"size\":\"10\",\r\n    \"param\":{\r\n        \"username\":\"\",\r\n        \"id\":\"\",\r\n        \"nickname\":\"\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/UC30/UC3001",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"UC30",
+								"UC3001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查询用户关联角色",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\":\"1\",\r\n    \"size\":\"10\",\r\n    \"param\":{\r\n        \"id\":\"1\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/UC30/UC3004",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"UC30",
+								"UC3004"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "更新用户系统角色",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"1\",\r\n    \"roles\": [\r\n        {\r\n            \"userId\": \"1\",\r\n            \"roleId\": \"2\"\r\n        },\r\n        {\r\n            \"userId\": \"1\",\r\n            \"roleId\": \"1\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/UC30/UC3005",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"UC30",
+								"UC3005"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "新增用户",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"123456\",\r\n    \"nickname\": \"admin\",\r\n    \"headImgUrl\": \"https://www.baidu.com\",\r\n    \"mobile\": \"18888888888\",\r\n    \"sex\": 1,\r\n    \"wechat\": \"123test\",\r\n    \"email\": \"1155896@qq.com\",\r\n    \"organId\":\"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/UC30/UC3012",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"UC30",
+								"UC3012"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "增加用户项目角色",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"1\",\r\n    \"itemId\":\"1\",\r\n    \"roles\": [\r\n        {\r\n            \"roleId\": \"3\"\r\n        },\r\n         {\r\n            \"roleId\": \"4\"\r\n        }\r\n    ],\r\n    \"tenantId\":\"1\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/UC30/UC3006",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"UC30",
+								"UC3006"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "更新用户项目角色",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"1\",\r\n    \"itemId\":\"1\",\r\n    \"type\":\"tenant\",\r\n    \"tenantId\":\"1\",\r\n    \"roles\": [\r\n        {\r\n            \"roleId\": \"3\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/UC30/UC3007",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"UC30",
+								"UC3007"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查询用户关联组",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\":\"1\",\r\n    \"size\":\"10\",\r\n    \"param\":{\r\n        \"id\":\"1\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/UC30/UC3008",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"UC30",
+								"UC3008"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "添加用户到组",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"userId\":\"44\",\r\n        \"groupId\":\"7\"\r\n    },\r\n        {\r\n        \"userId\":\"45\",\r\n        \"groupId\":\"7\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/UC30/UC3010",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"UC30",
+								"UC3010"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "从组中删除用户",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"param\": {\r\n        \"id\": \"1\"\r\n    },\r\n    \"groupId\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/UC30/UC3009",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"UC30",
+								"UC3009"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "删除用户项目角色",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"1\",\r\n    \"itemId\":\"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/UC30/UC3011",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"UC30",
+								"UC3011"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查询用户列表",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"\",\r\n    \"username\":\"\",\r\n    \"nickname\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/UC30/UC3013",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"UC30",
+								"UC3013"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "文件导入用户",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "multipart/form-data",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/DFJX/Desktop/userTemplate.csv"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/UC30/UC3014",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"UC30",
+								"UC3014"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "文件导入用户模板下载",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/UC30/UC3016",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"UC30",
+								"UC3016"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "cluster",
+			"item": [
+				{
+					"name": "新增集群",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"cluster-1\",\r\n    \"name\": \"测试集群1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:7000/UC10/UC1001",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "7000",
+							"path": [
+								"UC10",
+								"UC1001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "更新集群",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"1\",\r\n    \"createUser\": \"admin\",\r\n    \"updateUser\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:7000/UC10/UC1003",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "7000",
+							"path": [
+								"UC10",
+								"UC1003"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "删除用户",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"group001\",\r\n    \"name\":\"普通用户组\",\r\n    \"type\":\"O\",\r\n    \"desc\":\"普通用户组\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:7000/UC10/UC1002/1",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "7000",
+							"path": [
+								"UC10",
+								"UC1002",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查询集群",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\": \"1\",\r\n    \"size\": \"10\",\r\n    \"param\": {\r\n\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/UC10/UC1004",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"UC10",
+								"UC1004"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "item",
+			"item": [
+				{
+					"name": "新增项目",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"xxqb测试项目\",\r\n    \"iden\": \"xxqb_test_01\",\r\n    \"desc\": \"测试项目\",\r\n    \"ids\": [\r\n        \"5\",\"3\"\r\n    ]\r\n }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9003/MC10/MC1001",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9003",
+							"path": [
+								"MC10",
+								"MC1001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "更新项目信息",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"12\",\r\n    \"maxStore\": \"12\",\r\n    \"fileLimit\": \"1111\"\r\n }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9003/MC10/MC1004",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9003",
+							"path": [
+								"MC10",
+								"MC1004"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查询项目",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "3a04f850-3720-458f-b009-43101eb0ac9e",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\":\"1\",\r\n    \"size\":\"10\",\r\n    \"param\":{\r\n        \"startTime\":\"\",\r\n        \"endTime\":\"\",\r\n        \"name\":\"\"\r\n    }\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:7003/api-item/MC10/MC1006",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "7003",
+							"path": [
+								"api-item",
+								"MC10",
+								"MC1006"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查询项目成员",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\":\"1\",\r\n    \"size\":\"10\",\r\n    \"param\":{\r\n        \"id\":\"27\",\r\n        \"name\":\"\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9003/MC10/MC1007",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9003",
+							"path": [
+								"MC10",
+								"MC1007"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查询项目成员组",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\":\"1\",\r\n    \"size\":\"10\",\r\n    \"param\":{\r\n        \"id\":\"1\",\r\n        \"name\":\"\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9003/MC10/MC1008",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9003",
+							"path": [
+								"MC10",
+								"MC1008"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "删除项目",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ids\":[\"1\"],\r\n    \"isDel\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9003/MC10/MC1009",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9003",
+							"path": [
+								"MC10",
+								"MC1009"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "新增项目资源",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"yarnQueue\":\"default\",\r\n    \"hdfsPath\":\"/project/xxqb_test_01\",\r\n    \"fileLimit\":\"42933712\",\r\n    \"maxStore\":\"1496\",\r\n    \"itemId\":\"1\",\r\n    \"clusterId\":\"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9003/MC10/MC1002",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9003",
+							"path": [
+								"MC10",
+								"MC1002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查询项目资源",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9003/MC10/MC1010",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9003",
+							"path": [
+								"MC10",
+								"MC1010"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "更新项目资源",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n    \"id\": 9,\r\n    \"fileLimit\": 42933000,\r\n    \"maxStore\": 1496\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9003/MC10/MC1005",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9003",
+							"path": [
+								"MC10",
+								"MC1005"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "新增项目成员",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"27\",\r\n    \"ids\": [\r\n        \"6\"\r\n    ],\r\n    \"roleIds\": [\r\n        \"3\",\"4\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9003/MC10/MC1011",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9003",
+							"path": [
+								"MC10",
+								"MC1011"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "新增项目成员组",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"\",\r\n    \"ids\": [\r\n        \"5\",\r\n        \"3\"\r\n    ],\r\n    \"roleIds\": [\r\n        \"1\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9003/MC10/MC1012",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9003",
+							"path": [
+								"MC10",
+								"MC1012"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "删除项目成员组",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"\",\r\n    \"ids\": [\r\n        \"5\",\r\n        \"3\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9003/MC10/MC1013",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9003",
+							"path": [
+								"MC10",
+								"MC1013"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "删除项目成员",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"27\",\r\n    \"ids\": [\r\n        \"6\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9003/MC10/MC1014",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9003",
+							"path": [
+								"MC10",
+								"MC1014"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "更新项目成员",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"\",\r\n    \"ids\": [\r\n        \"5\",\r\n        \"3\"\r\n    ],\r\n    \"roleIds\":[\r\n        \"1\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9003/MC10/MC1015",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9003",
+							"path": [
+								"MC10",
+								"MC1015"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "更新项目成员组",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"\",\r\n    \"ids\": [\r\n        \"5\",\r\n        \"3\"\r\n    ],\r\n    \"roleIds\":[\r\n        \"1\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9003/MC10/MC1016",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9003",
+							"path": [
+								"MC10",
+								"MC1016"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查询项目所有成员",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"27\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9003/MC10/MC1017",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9003",
+							"path": [
+								"MC10",
+								"MC1017"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查询项目所有成员组",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9003/MC10/MC1018",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9003",
+							"path": [
+								"MC10",
+								"MC1018"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "根据项目id查询项目关联的集群",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"8\"\r\n }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9003/MC10/MC1024",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9003",
+							"path": [
+								"MC10",
+								"MC1024"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查询所有项目",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-user-header",
+								"value": "admin",
+								"type": "text"
+							},
+							{
+								"key": "x-userid-header",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"enabled\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9003/MC10/MC1019",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9003",
+							"path": [
+								"MC10",
+								"MC1019"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "根据用户id查询所拥有的项目",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-user-header",
+								"value": "admin",
+								"type": "text"
+							},
+							{
+								"key": "x-userid-header",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 13\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9003/MC10/MC1020",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9003",
+							"path": [
+								"MC10",
+								"MC1020"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "根据当前登录用户查询所拥有的项目",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-user-header",
+								"value": "xumengmeng",
+								"type": "text"
+							},
+							{
+								"key": "x-userid-header",
+								"value": "13",
+								"type": "text"
+							},
+							{
+								"key": "x-role-header",
+								"value": "admin",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9003/MC10/MC1021",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9003",
+							"path": [
+								"MC10",
+								"MC1021"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "organization",
+			"item": [
+				{
+					"name": "创建机构",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\":\"organ-second-2\",\r\n    \"name\":\"组织架构第二层2\",\r\n    \"parentId\":\"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/UC80/UC8002",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"UC80",
+								"UC8002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查询机构树",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\":\"organ-second-2\",\r\n    \"name\":\"组织架构第二层2\",\r\n    \"parentId\":\"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/UC80/UC8001",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"UC80",
+								"UC8001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "根据id查找组织树",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/UC80/UC8005/3",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"UC80",
+								"UC8005",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "login",
+			"item": [
+				{
+					"name": "登录接口",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Pragma",
+								"value": "no-cache"
+							},
+							{
+								"key": "Cache-Control",
+								"value": "no-cache"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic d2ViQXBwOndlYkFwcA=="
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.12 Safari/537.36"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded; charset=UTF-8"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "zh-CN,zh;q=0.9"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "XPkDmEM6+soNhyJOkqwuZw==&5sPeJr4dIkYZaxHN",
+									"type": "text"
+								},
+								{
+									"key": "deviceId",
+									"value": "C36FA76D-665B-450A-B846-D1AFEC20C5BA",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "password_code",
+									"type": "text"
+								},
+								{
+									"key": "validCode",
+									"value": "24",
+									"type": "text"
+								},
+								{
+									"key": "keepLogin",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "127.0.0.1:7003/api-uaa/oauth/token",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "7003",
+							"path": [
+								"api-uaa",
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "新增或更新用户",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"admin\",\r\n    \"password\":\"admin\",\r\n    \"nickname\":\"超级管理员\",\r\n    \"sex\":\"1\",\r\n    \"email\":\"1111@qq.com\",\r\n    \"roleIds\":[\r\n        \"1\",\"2\"\r\n    ],\r\n    \"desc\":\"超管\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:9003/users/saveOrUpdate",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9003",
+							"path": [
+								"users",
+								"saveOrUpdate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "验证码",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Pragma",
+								"value": "no-cache"
+							},
+							{
+								"key": "Cache-Control",
+								"value": "no-cache"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.12 Safari/537.36"
+							},
+							{
+								"key": "Accept",
+								"value": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8"
+							},
+							{
+								"key": "Referer",
+								"value": "http://zlt2000.cn/"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "zh-CN,zh;q=0.9"
+							},
+							{
+								"key": "Cookie",
+								"value": "__gads=ID=6e4e47dfe1a73657-222ceabb9acb0086:T=1631514126:RT=1631514126:S=ALNI_Mb_BfpRThNBPWrOb9jsnnrGU2mQTw; Hm_lvt_40806618ee422b74d844222ac189a9e6=1631514126,1631599365,1631610094,1631677406; Hm_lpvt_40806618ee422b74d844222ac189a9e6=1631677406"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:7003/api-uaa/validata/code/C36FA76D-665B-450A-B846-D1AFEC20C5BA?t=1631677411541",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "7003",
+							"path": [
+								"api-uaa",
+								"validata",
+								"code",
+								"C36FA76D-665B-450A-B846-D1AFEC20C5BA"
+							],
+							"query": [
+								{
+									"key": "t",
+									"value": "1631677411541"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获取当前登录用户的信息",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "780a4b7b-c800-4ae1-9b6a-9d674109829f",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Pragma",
+								"value": "no-cache"
+							},
+							{
+								"key": "Cache-Control",
+								"value": "no-cache"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json, text/javascript, */*; q=0.01"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.12 Safari/537.36"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "http://zlt2000.cn"
+							},
+							{
+								"key": "Referer",
+								"value": "http://zlt2000.cn/"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "zh-CN,zh;q=0.9"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:7003/api-user/admin-api/system/user/current",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "7003",
+							"path": [
+								"api-user",
+								"admin-api",
+								"system",
+								"user",
+								"current"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "code码登录接口",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "app",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "app",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Pragma",
+								"value": "no-cache"
+							},
+							{
+								"key": "Cache-Control",
+								"value": "no-cache"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic d2ViQXBwOndlYkFwcA=="
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.12 Safari/537.36"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded; charset=UTF-8"
+							},
+							{
+								"key": "Origin",
+								"value": "http://127.0.0.1:7004",
+								"disabled": true
+							},
+							{
+								"key": "Referer",
+								"value": "http://127.0.0.1:7004",
+								"disabled": true
+							},
+							{
+								"key": "Accept-Language",
+								"value": "zh-CN,zh;q=0.9"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "text"
+								},
+								{
+									"key": "deviceId",
+									"value": "5989460F-C03D-432D-940D-C18BD222F2E1",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "password_code",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:7003/api-uaa/oauth/token?code=WQwsxe&grant_type=authorization_code&redirect_uri=http://www.baidu.com",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "7003",
+							"path": [
+								"api-uaa",
+								"oauth",
+								"token"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "WQwsxe"
+								},
+								{
+									"key": "grant_type",
+									"value": "authorization_code"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "http://www.baidu.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "授权码登录",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:7003/api-uaa/oauth/authorize?client_id=app&redirect_uri=http://www.baidu.com&response_type=code&scope=app",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "7003",
+							"path": [
+								"api-uaa",
+								"oauth",
+								"authorize"
+							],
+							"query": [
+								{
+									"key": "client_id",
+									"value": "app"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "http://www.baidu.com"
+								},
+								{
+									"key": "response_type",
+									"value": "code"
+								},
+								{
+									"key": "scope",
+									"value": "app"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "验证码captche",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Pragma",
+								"value": "no-cache"
+							},
+							{
+								"key": "Cache-Control",
+								"value": "no-cache"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.12 Safari/537.36"
+							},
+							{
+								"key": "Accept",
+								"value": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8"
+							},
+							{
+								"key": "Referer",
+								"value": "http://zlt2000.cn/"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "zh-CN,zh;q=0.9"
+							},
+							{
+								"key": "Cookie",
+								"value": "__gads=ID=6e4e47dfe1a73657-222ceabb9acb0086:T=1631514126:RT=1631514126:S=ALNI_Mb_BfpRThNBPWrOb9jsnnrGU2mQTw; Hm_lvt_40806618ee422b74d844222ac189a9e6=1631514126,1631599365,1631610094,1631677406; Hm_lpvt_40806618ee422b74d844222ac189a9e6=1631677406"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"captchaType\": \"blockPuzzle\",\r\n    \"clientUid\": \"slider-367b81c9-74e7-483e-a132-efefb53bda58\",\r\n    \"ts\": 1660898340418\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:7003/api-uaa/validata/captcha/get",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "7003",
+							"path": [
+								"api-uaa",
+								"validata",
+								"captcha",
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "登录获取用户",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:9002/admin-api/system/user/login/admin",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"admin-api",
+								"system",
+								"user",
+								"login",
+								"admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获得权限信息",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "14a7112f-4b4b-4019-ab5f-bb874d299186",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "zh-CN,zh;q=0.9"
+							},
+							{
+								"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+								"key": "Authorization",
+								"value": "Bearer b4f824f619074bfe9bb3eab15304ee1a"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "tenant-id",
+								"value": "1"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:7003/api-user/admin-api/system/auth/get-permission-info",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "7003",
+							"path": [
+								"api-user",
+								"admin-api",
+								"system",
+								"auth",
+								"get-permission-info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获得菜单信息",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "780a4b7b-c800-4ae1-9b6a-9d674109829f",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "zh-CN,zh;q=0.9"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer b4f824f619074bfe9bb3eab15304ee1a"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Origin",
+								"value": "http://dashboard.yudao.iocoder.cn"
+							},
+							{
+								"key": "Referer",
+								"value": "http://dashboard.yudao.iocoder.cn/"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "tenant-id",
+								"value": "1"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:7003/api-user/admin-api/system/auth/list-menus",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "7003",
+							"path": [
+								"api-user",
+								"admin-api",
+								"system",
+								"auth",
+								"list-menus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "分页获取用户列表",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "780a4b7b-c800-4ae1-9b6a-9d674109829f",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "zh-CN,zh;q=0.9"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 7b566960f4e448369460a40bb1955afb"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Origin",
+								"value": "http://dashboard.yudao.iocoder.cn"
+							},
+							{
+								"key": "Referer",
+								"value": "http://dashboard.yudao.iocoder.cn/"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "tenant-id",
+								"value": "1"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:7003/api-user/admin-api/system/user/page?pageNo=1&pageSize=10",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "7003",
+							"path": [
+								"api-user",
+								"admin-api",
+								"system",
+								"user",
+								"page"
+							],
+							"query": [
+								{
+									"key": "pageNo",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获得所有部门简略列表",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "780a4b7b-c800-4ae1-9b6a-9d674109829f",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "zh-CN,zh;q=0.9"
+							},
+							{
+								"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+								"key": "Authorization",
+								"value": "Bearer 7b566960f4e448369460a40bb1955afb"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "tenant-id",
+								"value": "1"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:7003/api-user/admin-api/system/dept/list-all-simple",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "7003",
+							"path": [
+								"api-user",
+								"admin-api",
+								"system",
+								"dept",
+								"list-all-simple"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获得所有岗位简略列表",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "e66dfd9a-13b3-4fd5-b45e-9024ab2c87fd",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "zh-CN,zh;q=0.9"
+							},
+							{
+								"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+								"key": "Authorization",
+								"value": "Bearer 7b566960f4e448369460a40bb1955afb"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "tenant-id",
+								"value": "1"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:7003/api-user/admin-api/system/post/list-all-simple",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "7003",
+							"path": [
+								"api-user",
+								"admin-api",
+								"system",
+								"post",
+								"list-all-simple"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获得所有菜单简略列表",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "e66dfd9a-13b3-4fd5-b45e-9024ab2c87fd",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "zh-CN,zh;q=0.9"
+							},
+							{
+								"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+								"key": "Authorization",
+								"value": "Bearer 7b566960f4e448369460a40bb1955afb"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "tenant-id",
+								"value": "1"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:7003/api-user/admin-api/system/menu/list-all-simple",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "7003",
+							"path": [
+								"api-user",
+								"admin-api",
+								"system",
+								"menu",
+								"list-all-simple"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获得所有角色简略列表",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "e66dfd9a-13b3-4fd5-b45e-9024ab2c87fd",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "zh-CN,zh;q=0.9"
+							},
+							{
+								"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+								"key": "Authorization",
+								"value": "Bearer 7b566960f4e448369460a40bb1955afb"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "tenant-id",
+								"value": "1"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:7003/api-user/admin-api/system/role/list-all-simple",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "7003",
+							"path": [
+								"api-user",
+								"admin-api",
+								"system",
+								"role",
+								"list-all-simple"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获得所有用户简略列表",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "7ab11fe6-933a-455f-af0e-b96a3749e024",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "zh-CN,zh;q=0.9"
+							},
+							{
+								"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+								"key": "Authorization",
+								"value": "Bearer 7b566960f4e448369460a40bb1955afb"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "tenant-id",
+								"value": "1"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:7003/api-user/admin-api/system/user/list-all-simple",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "7003",
+							"path": [
+								"api-user",
+								"admin-api",
+								"system",
+								"user",
+								"list-all-simple"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获得角色列表",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "e66dfd9a-13b3-4fd5-b45e-9024ab2c87fd",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "zh-CN,zh;q=0.9"
+							},
+							{
+								"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+								"key": "Authorization",
+								"value": "Bearer 4ff0eb2cfb8a4db2a8e65a8b74c51abf"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "tenant-id",
+								"value": "1"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:7003/api-user/admin-api/system/role/page?pageNo=1&pageSize=10",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "7003",
+							"path": [
+								"api-user",
+								"admin-api",
+								"system",
+								"role",
+								"page"
+							],
+							"query": [
+								{
+									"key": "pageNo",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获取角色对应的权限",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "e66dfd9a-13b3-4fd5-b45e-9024ab2c87fd",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "zh-CN,zh;q=0.9"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 4ff0eb2cfb8a4db2a8e65a8b74c51abf"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Origin",
+								"value": "http://dashboard.yudao.iocoder.cn"
+							},
+							{
+								"key": "Referer",
+								"value": "http://dashboard.yudao.iocoder.cn/"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "tenant-id",
+								"value": "1"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:7003/api-user/admin-api/system/permission/list-role-resources?roleId=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "7003",
+							"path": [
+								"api-user",
+								"admin-api",
+								"system",
+								"permission",
+								"list-role-resources"
+							],
+							"query": [
+								{
+									"key": "roleId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "根据角色id获取角色信息",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "76faecb2-2f2e-4393-90e2-f2122761708c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "zh-CN,zh;q=0.9"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 4ff0eb2cfb8a4db2a8e65a8b74c51abf"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "tenant-id",
+								"value": "1"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:7003/api-user/admin-api/system/role/get?id=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "7003",
+							"path": [
+								"api-user",
+								"admin-api",
+								"system",
+								"role",
+								"get"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查询租户列表",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "76faecb2-2f2e-4393-90e2-f2122761708c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "zh-CN,zh;q=0.9"
+							},
+							{
+								"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+								"key": "Authorization",
+								"value": "Bearer 914187e23e9c40899c1ac01b1999a957"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "tenant-id",
+								"value": "1"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:7003/api-user/admin-api/system/tenant/page?pageNo=1&pageSize=10",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "7003",
+							"path": [
+								"api-user",
+								"admin-api",
+								"system",
+								"tenant",
+								"page"
+							],
+							"query": [
+								{
+									"key": "pageNo",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获取所有租户套餐简略列表",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "76faecb2-2f2e-4393-90e2-f2122761708c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "zh-CN,zh;q=0.9"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 914187e23e9c40899c1ac01b1999a957"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "tenant-id",
+								"value": "1"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:7003/api-user/admin-api/system/tenant-package/get-simple-list",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "7003",
+							"path": [
+								"api-user",
+								"admin-api",
+								"system",
+								"tenant-package",
+								"get-simple-list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获取租户套餐列表",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "76faecb2-2f2e-4393-90e2-f2122761708c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "zh-CN,zh;q=0.9"
+							},
+							{
+								"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+								"key": "Authorization",
+								"value": "Bearer 914187e23e9c40899c1ac01b1999a957"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "tenant-id",
+								"value": "1"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:7003/api-user/admin-api/system/tenant-package/page?pageNo=1&pageSize=10",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "7003",
+							"path": [
+								"api-user",
+								"admin-api",
+								"system",
+								"tenant-package",
+								"page"
+							],
+							"query": [
+								{
+									"key": "pageNo",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "菜单列表",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "7ab11fe6-933a-455f-af0e-b96a3749e024",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "zh-CN,zh;q=0.9"
+							},
+							{
+								"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+								"key": "Authorization",
+								"value": "Bearer 5a04ca722b704edab5fe744790d43bb4"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "tenant-id",
+								"value": "1"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:7003/api-user/admin-api/system/menu/list",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "7003",
+							"path": [
+								"api-user",
+								"admin-api",
+								"system",
+								"menu",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获取部门列表",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "7ab11fe6-933a-455f-af0e-b96a3749e024",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "zh-CN,zh;q=0.9"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 5a04ca722b704edab5fe744790d43bb4"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Origin",
+								"value": "http://dashboard.yudao.iocoder.cn"
+							},
+							{
+								"key": "Referer",
+								"value": "http://dashboard.yudao.iocoder.cn/"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "tenant-id",
+								"value": "1"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:7003/api-user/admin-api/system/dept/list",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "7003",
+							"path": [
+								"api-user",
+								"admin-api",
+								"system",
+								"dept",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获取岗位列表",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "7ab11fe6-933a-455f-af0e-b96a3749e024",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "zh-CN,zh;q=0.9"
+							},
+							{
+								"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+								"key": "Authorization",
+								"value": "Bearer 5a04ca722b704edab5fe744790d43bb4"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "tenant-id",
+								"value": "1"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:7003/api-user/admin-api/system/post/page?pageNo=1&pageSize=10",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "7003",
+							"path": [
+								"api-user",
+								"admin-api",
+								"system",
+								"post",
+								"page"
+							],
+							"query": [
+								{
+									"key": "pageNo",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查询字典列表",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "7ab11fe6-933a-455f-af0e-b96a3749e024",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "zh-CN,zh;q=0.9"
+							},
+							{
+								"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+								"key": "Authorization",
+								"value": "Bearer 5a04ca722b704edab5fe744790d43bb4"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "tenant-id",
+								"value": "1"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:7003/api-user/admin-api/system/dict-type/page?pageNo=1&pageSize=10",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "7003",
+							"path": [
+								"api-user",
+								"admin-api",
+								"system",
+								"dict-type",
+								"page"
+							],
+							"query": [
+								{
+									"key": "pageNo",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查询错误码",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "14a7112f-4b4b-4019-ab5f-bb874d299186",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "zh-CN,zh;q=0.9"
+							},
+							{
+								"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+								"key": "Authorization",
+								"value": "Bearer 5a04ca722b704edab5fe744790d43bb4"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "tenant-id",
+								"value": "1"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:7003/api-user/admin-api/system/error-code/page?pageNo=1&pageSize=10",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "7003",
+							"path": [
+								"api-user",
+								"admin-api",
+								"system",
+								"error-code",
+								"page"
+							],
+							"query": [
+								{
+									"key": "pageNo",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "导出用户",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "7ab11fe6-933a-455f-af0e-b96a3749e024",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "zh-CN,zh;q=0.9"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 5a04ca722b704edab5fe744790d43bb4"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Origin",
+								"value": "http://dashboard.yudao.iocoder.cn"
+							},
+							{
+								"key": "Referer",
+								"value": "http://dashboard.yudao.iocoder.cn/"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "tenant-id",
+								"value": "1"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:7003/api-user/admin-api/system/user/export?pageNo=1&pageSize=10",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "7003",
+							"path": [
+								"api-user",
+								"admin-api",
+								"system",
+								"user",
+								"export"
+							],
+							"query": [
+								{
+									"key": "pageNo",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "导出租户",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "7ab11fe6-933a-455f-af0e-b96a3749e024",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "zh-CN,zh;q=0.9"
+							},
+							{
+								"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+								"key": "Authorization",
+								"value": "Bearer 80c2b0d4e1474427a6c2bcb120289656"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "tenant-id",
+								"value": "1"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:7003/api-user/admin-api/system/tenant/export-excel",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "7003",
+							"path": [
+								"api-user",
+								"admin-api",
+								"system",
+								"tenant",
+								"export-excel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获取访问日志",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "7ab11fe6-933a-455f-af0e-b96a3749e024",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "zh-CN,zh;q=0.9"
+							},
+							{
+								"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+								"key": "Authorization",
+								"value": "Bearer 80c2b0d4e1474427a6c2bcb120289656"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "tenant-id",
+								"value": "1"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:7003/api-user/admin-api/infra/api-access-log/page?pageNo=1&pageSize=10",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "7003",
+							"path": [
+								"api-user",
+								"admin-api",
+								"infra",
+								"api-access-log",
+								"page"
+							],
+							"query": [
+								{
+									"key": "pageNo",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "短信验证码登录接口",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							},
+							{
+								"key": "Pragma",
+								"value": "no-cache"
+							},
+							{
+								"key": "Cache-Control",
+								"value": "no-cache"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic d2ViQXBwOndlYkFwcA=="
+							},
+							{
+								"key": "User-Agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.12 Safari/537.36"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded; charset=UTF-8"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "zh-CN,zh;q=0.9"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "XPkDmEM6+soNhyJOkqwuZw==&5sPeJr4dIkYZaxHN",
+									"type": "text"
+								},
+								{
+									"key": "deviceId",
+									"value": "C36FA76D-665B-450A-B846-D1AFEC20C5BA",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "password_code",
+									"type": "text"
+								},
+								{
+									"key": "validCode",
+									"value": "24",
+									"type": "text"
+								},
+								{
+									"key": "keepLogin",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "127.0.0.1:7003/api-uaa/oauth/token",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "7003",
+							"path": [
+								"api-uaa",
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "menu",
+			"item": [
+				{
+					"name": "查询所有菜单",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/menus/findAlls",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"menus",
+								"findAlls"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查询所有一级菜单",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/menus/findOnes",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"menus",
+								"findOnes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "给角色分配菜单",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roleId\": \"1\",\r\n    \"menuIds\": [\r\n        \"12\",\r\n        \"37\",\r\n        \"63\",\r\n        \"67\",\r\n        \"71\",\r\n        \"80\",\r\n        \"81\",\r\n        \"82\",\r\n        \"83\",\r\n        \"84\",\r\n        \"75\",\r\n        \"76\",\r\n        \"77\",\r\n        \"78\",\r\n        \"79\",\r\n        \"2\",\r\n        \"3\",\r\n        \"4\",\r\n        \"11\",\r\n        \"35\",\r\n        \"74\",\r\n        \"9\",\r\n        \"10\",\r\n        \"65\",\r\n        \"69\",\r\n        \"62\",\r\n        \"64\",\r\n        \"66\",\r\n        \"68\",\r\n        \"70\",\r\n        \"85\",\r\n        \"72\",\r\n        \"73\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/menus/granted",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"menus",
+								"granted"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查询角色对应的接口权限",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/menus/admin",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"menus",
+								"admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获取当前用户的权限信息",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-userid-header",
+								"value": "1",
+								"type": "text"
+							},
+							{
+								"key": "x-role-header",
+								"value": "admin,sysOperation",
+								"type": "text"
+							},
+							{
+								"key": "x-user-header",
+								"value": "admin",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/menus/1/menus",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"menus",
+								"1",
+								"menus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "删除菜单",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-userid-header",
+								"value": "1",
+								"type": "text"
+							},
+							{
+								"key": "x-role-header",
+								"value": "admin,sysOperation",
+								"type": "text"
+							},
+							{
+								"key": "x-user-header",
+								"value": "admin",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/menus/{id}",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"menus",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "新增菜单",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"parentId\": \"\",\r\n    \"name\": \"\",\r\n    \"css\": \"\",\r\n    \"url\": \"\",\r\n    \"path\": \"\",\r\n    \"sort\": \"\",\r\n    \"type\": \"\",\r\n    \"hidden\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9002/menus/saveOrUpdate",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9002",
+							"path": [
+								"menus",
+								"saveOrUpdate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "datasource",
+			"item": [
+				{
+					"name": "查询extend的数据源类型",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"category\":\"extend\",\r\n    \"isValid\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9003/MC30/MC3001",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9003",
+							"path": [
+								"MC30",
+								"MC3001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "分页查询的数据源",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "9a7cbf04-0631-4bf1-9d2e-acc7ba0616fe",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\":\"1\",\r\n    \"size\":\"10\",\r\n    \"param\":{\r\n        \"name\":\"\",\r\n        \"typeId\":\"\",\r\n        \"itemId\":\"\",\r\n        \"clusterId\":\"\"\r\n    }\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9003/MC30/MC3003",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9003",
+							"path": [
+								"MC30",
+								"MC3003"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "根据数据源类型id查询对应的参数模板",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"6\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9003/MC30/MC3004",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9003",
+							"path": [
+								"MC30",
+								"MC3004"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "mysql连接测试",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"mysql\",\r\n    \"properties\":\"{'host':'10.1.1.254','port':3306,'service':'sys','username':'root','password':'haojiayou@'}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9003/MC30/MC3007",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9003",
+							"path": [
+								"MC30",
+								"MC3007"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "hive连接测试",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"hive\",\r\n    \"properties\":\"{'host':'node16:2181,node17:2181,master:2181','username':'hive','password':'hive','server_ha':true}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "10.1.2.16:9003/MC30/MC3007",
+							"host": [
+								"10",
+								"1",
+								"2",
+								"16"
+							],
+							"port": "9003",
+							"path": [
+								"MC30",
+								"MC3007"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查询sql接口",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"24-hive\",\r\n    \"sql\":\"select * from test.student\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9003/MC30/MC3008",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9003",
+							"path": [
+								"MC30",
+								"MC3008"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查询数据源类型",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"category\":\"cluster\",\r\n    \"isValid\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9003/MC30/MC3011",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9003",
+							"path": [
+								"MC30",
+								"MC3011"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "保存数据源",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"typeId\":\"7\",\r\n    \"name\":\"\",\r\n    \"desc\":\"\",\r\n    \"properties\":\"\",\r\n    \"itemIds\":[]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9003/MC30/MC3002",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9003",
+							"path": [
+								"MC30",
+								"MC3002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "更新数据源",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"typeId\":\"7\",\r\n    \"name\":\"\",\r\n    \"desc\":\"\",\r\n    \"properties\":\"\",\r\n    \"itemIds\":[],\r\n    \"id\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9003/MC30/MC3005",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9003",
+							"path": [
+								"MC30",
+								"MC3005"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "根据分类查询对应的数据源类型",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"category\":\"extend\",\r\n    \"isValid\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9003/MC30/MC3011",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9003",
+							"path": [
+								"MC30",
+								"MC3011"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "database",
+			"item": [
+				{
+					"name": "创建数据库",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "003501c4-c1ae-4264-82a6-4ed96866ae5e",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"typeId\":5,\r\n    \"name\":\"test0927\",\r\n    \"itemId\":\"22\",\r\n    \"clusterId\":\"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:7003/api-item/MC20/MC2001",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "7003",
+							"path": [
+								"api-item",
+								"MC20",
+								"MC2001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "删除数据库",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1049ee7a-c8d0-4abb-a373-8d33f201cce8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"ids\":[2]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:7003/api-item/MC20/MC2002",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "7003",
+							"path": [
+								"api-item",
+								"MC20",
+								"MC2002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查询数据库",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "0ed3b295-c827-4659-9cda-64964316b011",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\":\"1\",\r\n    \"size\":\"10\",\r\n    \"param\":{\r\n        \"typeId\":\"6\",\r\n        \"name\":\"\",\r\n        \"itemId\":\"\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:7003/api-item/MC20/MC2003",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "7003",
+							"path": [
+								"api-item",
+								"MC20",
+								"MC2003"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "table",
+			"item": [
+				{
+					"name": "创建表mysql",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"typeId\":\"7\",\r\n    \"enName\":\"test\",\r\n    \"cnName\":\"测试表\",\r\n    \"itemId\":\"22\",\r\n    \"owner\":\"1\",\r\n    \"databaseId\":\"2\",\r\n    \"description\":\"测试11111\",\r\n    \"lifeTime\":1,\r\n    \"clusterId\":1,\r\n    \"createMode\":true,\r\n    \"fieldSql\":\"[{'name':'id','type':'int','size':'11','primaryKey':true,'comment':'字段id','location':'1','isNull':false},{'name':'name','type':'varchar','size':'24','comment':'字段name','location':'2','isNull':true},{'name':'date','type':'date','comment':'时间分区','location':'3','isNull':true}]\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9003/MC40/MC4001",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9003",
+							"path": [
+								"MC40",
+								"MC4001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "创建表hive",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"typeId\": \"6\",\r\n    \"enName\": \"test\",\r\n    \"cnName\": \"测试表\",\r\n    \"itemId\": \"20\",\r\n    \"owner\": \"1\",\r\n    \"databaseId\": \"1\",\r\n    \"busDesc\":\"业务描述\",\r\n    \"description\": \"测试11111\",\r\n    \"lifeTime\": 1,\r\n    \"clusterId\": 1,\r\n    \"isExternal\": false,\r\n    \"createMode\": true,\r\n\r\n    \"fieldSql\": \"[{'name':'id','type':'int','comment':'字段id','location':'1','partition':'false'},{'name':'name','type':'string','comment':'字段name','location':'2','partition':false},{'name':'date1','type':'string','comment':'时间分区','location':'3','partition':true}]\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9003/MC40/MC4001",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9003",
+							"path": [
+								"MC40",
+								"MC4001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查询表",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\":\"1\",\r\n    \"size\":\"10\",\r\n    \"param\":{\r\n\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9003/MC40/MC4002",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9003",
+							"path": [
+								"MC40",
+								"MC4002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "删除表",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ids\":[\r\n        \"1\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:9003/MC40/MC4003",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9003",
+							"path": [
+								"MC40",
+								"MC4003"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "devops",
+			"item": [
+				{
+					"name": "获得集群告警数",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:9100/devops/warning/count",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9100",
+							"path": [
+								"devops",
+								"warning",
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "存储地图-列表展示",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:9100/storageResource/subStorgeTrend?page=1&size=10&clusterId=1&startDay=20211212&endDay=20211214&storageType=TABLE",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9100",
+							"path": [
+								"storageResource",
+								"subStorgeTrend"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "clusterId",
+									"value": "1"
+								},
+								{
+									"key": "startDay",
+									"value": "20211212"
+								},
+								{
+									"key": "endDay",
+									"value": "20211214"
+								},
+								{
+									"key": "storageType",
+									"value": "TABLE"
+								},
+								{
+									"key": "table",
+									"value": "/warehouse/tablespace/managed/hive/dff.db/test",
+									"disabled": true
+								},
+								{
+									"key": "type",
+									"value": "hive",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "存储地图-列表展示db和table",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:9101/seabox/storage/subStorgeTrend?page=1&size=10&clusterId=1&startDay=20211202&endDay=20211210&storageType=DB&type=&dbName&table",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9101",
+							"path": [
+								"seabox",
+								"storage",
+								"subStorgeTrend"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "clusterId",
+									"value": "1"
+								},
+								{
+									"key": "startDay",
+									"value": "20211202"
+								},
+								{
+									"key": "endDay",
+									"value": "20211210"
+								},
+								{
+									"key": "storageType",
+									"value": "DB"
+								},
+								{
+									"key": "type",
+									"value": ""
+								},
+								{
+									"key": "dbName",
+									"value": null
+								},
+								{
+									"key": "table",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "概览-项目列表",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:9100/storageResource/getItemStorage?clusterId=1&page=1&size=10&period=WEEK&startDay=20211215&endDay=20211214",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9100",
+							"path": [
+								"storageResource",
+								"getItemStorage"
+							],
+							"query": [
+								{
+									"key": "clusterId",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "period",
+									"value": "WEEK"
+								},
+								{
+									"key": "orderColumnType",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "desc",
+									"value": "true|false",
+									"disabled": true
+								},
+								{
+									"key": "tenant",
+									"value": "2342342222",
+									"disabled": true
+								},
+								{
+									"key": "startDay",
+									"value": "20211215"
+								},
+								{
+									"key": "endDay",
+									"value": "20211214"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "概览-项目下钻列表",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:9100/storageResource/getFileStorageByTenant?clusterId=1&page=1&size=5&period=WEEK&tenant=2342342222&startDay=20211214&endDay=20211215",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "9100",
+							"path": [
+								"storageResource",
+								"getFileStorageByTenant"
+							],
+							"query": [
+								{
+									"key": "clusterId",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "5"
+								},
+								{
+									"key": "period",
+									"value": "WEEK"
+								},
+								{
+									"key": "orderColumnType",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "desc",
+									"value": "true|false",
+									"disabled": true
+								},
+								{
+									"key": "tenant",
+									"value": "2342342222"
+								},
+								{
+									"key": "startDay",
+									"value": "20211214"
+								},
+								{
+									"key": "endDay",
+									"value": "20211215"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "sdo",
+			"item": []
+		},
+		{
+			"name": "任务列表查询",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"page\":\"1\",\r\n    \"size\":\"10\",\r\n    \"param\":{\r\n        \"type\":\"1\",\r\n        \"clusterId\":\"\",\r\n        \"status\":\"0\",\r\n        \"jobId\":\"\",\r\n        \"path\":\"\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:9115/api/page",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9115",
+					"path": [
+						"api",
+						"page"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "上传脚本",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-userid-header",
+						"value": "1",
+						"type": "text"
+					},
+					{
+						"key": "x-role-header",
+						"value": "admin",
+						"type": "text"
+					},
+					{
+						"key": "x-user-header",
+						"value": "admin",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "clusterId",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "itemId",
+							"value": "52",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/DFJX/Desktop/sdps-24.sql"
+						},
+						{
+							"key": "belong",
+							"value": "P",
+							"type": "text"
+						},
+						{
+							"key": "serverType",
+							"value": "S",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "127.0.0.1:9003/scriptManager/upload",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9003",
+					"path": [
+						"scriptManager",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "查询脚本",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-userid-header",
+						"value": "1",
+						"type": "text"
+					},
+					{
+						"key": "x-role-header",
+						"value": "admin",
+						"type": "text"
+					},
+					{
+						"key": "x-user-header",
+						"value": "admin",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"page\":\"1\",\r\n    \"size\":\"10\",\r\n    \"param\":{\r\n        \"fileName\":\"\",\r\n        \"type\":\"\",\r\n        \"itemId\":\"\",\r\n        \"clusterId\":\"\",\r\n        \"serverType\":\"\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:9003/scriptManager/pageList",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9003",
+					"path": [
+						"scriptManager",
+						"pageList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "下载脚本",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-userid-header",
+						"value": "1",
+						"type": "text"
+					},
+					{
+						"key": "x-role-header",
+						"value": "admin",
+						"type": "text"
+					},
+					{
+						"key": "x-user-header",
+						"value": "admin",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "127.0.0.1:9003/scriptManager/download/1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9003",
+					"path": [
+						"scriptManager",
+						"download",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "删除脚本",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-userid-header",
+						"value": "1",
+						"type": "text"
+					},
+					{
+						"key": "x-role-header",
+						"value": "admin",
+						"type": "text"
+					},
+					{
+						"key": "x-user-header",
+						"value": "admin",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "clusterId",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "itemId",
+							"value": "52",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/DFJX/Desktop/sdps-24.sql"
+						},
+						{
+							"key": "belong",
+							"value": "P",
+							"type": "text"
+						},
+						{
+							"key": "serverType",
+							"value": "S",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "127.0.0.1:9003/scriptManager/remove/1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9003",
+					"path": [
+						"scriptManager",
+						"remove",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "更新yarn队列",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"parentQueueFullName\": \"root\",\r\n        \"queueName\": \"default\",\r\n        \"queueFullName\": \"root.default\",\r\n        \"capacity\": \"98\",\r\n        \"state\": \"RUNNING\",\r\n        \"maximumCapacity\": \"100\",\r\n        \"priority\": \"0\",\r\n        \"maximumAllocationMb\": \"8192\",\r\n        \"maximumAllocationVcores\": \"3\",\r\n        \"userLimitFactor\": \"1\",\r\n        \"maximumApplications\": \"10000\",\r\n        \"maximumAmResourcePercent\": \"0.5\",\r\n        \"orderingPolicy\": \"capacity\"\r\n    },\r\n    {\r\n        \"parentQueueFullName\": \"root\",\r\n        \"queueName\": \"test\",\r\n        \"queueFullName\": \"root.test\",\r\n        \"capacity\": \"2\",\r\n        \"queues\": [\r\n            \"sub01\",\r\n            \"sub02\"\r\n        ],\r\n        \"state\": \"RUNNING\",\r\n        \"maximumCapacity\": \"100\",\r\n        \"priority\": \"0\",\r\n        \"maximumAllocationMb\": \"8192\",\r\n        \"maximumAllocationVcores\": \"3\",\r\n        \"userLimitFactor\": \"1\",\r\n        \"minimumUserLimitPercent\": \"100\",\r\n        \"maximumApplications\": \"10000\",\r\n        \"maximumAmResourcePercent\": \"0.5\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:9101/seabox/upateYarnQueueConfigurate?clusterId=1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9101",
+					"path": [
+						"seabox",
+						"upateYarnQueueConfigurate"
+					],
+					"query": [
+						{
+							"key": "clusterId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "获取yarn正在运行的任务",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://10.1.3.24:8088/ws/v1/cluster/apps?states=RUNNING&queue=default",
+					"protocol": "http",
+					"host": [
+						"10",
+						"1",
+						"3",
+						"24"
+					],
+					"port": "8088",
+					"path": [
+						"ws",
+						"v1",
+						"cluster",
+						"apps"
+					],
+					"query": [
+						{
+							"key": "states",
+							"value": "RUNNING"
+						},
+						{
+							"key": "queue",
+							"value": "default"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "查询yarn队列",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:9101/seabox/getYarnQueueConfigurate?clusterId=1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9101",
+					"path": [
+						"seabox",
+						"getYarnQueueConfigurate"
+					],
+					"query": [
+						{
+							"key": "clusterId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "查询用户同步详情",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:9002/UC30/UC3020?userId=2",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9002",
+					"path": [
+						"UC30",
+						"UC3020"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "用户同步操作",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\":\"3\",\r\n    \"operation\":\"delete\",\r\n    \"clusterIds\":[1],\r\n    \"syncTypes\":[\"kerberos\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:9009/usersync/operator",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9009",
+					"path": [
+						"usersync",
+						"operator"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "获取组件登录信息",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "09e2282b-8c2d-4adb-a0d0-a633f99b5f1d",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Server-Type",
+						"value": "SKAFKA",
+						"type": "text"
+					},
+					{
+						"key": "clusterId",
+						"value": "2",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "10.1.3.114:7003/api-skafka/login/cert",
+					"host": [
+						"10",
+						"1",
+						"3",
+						"114"
+					],
+					"port": "7003",
+					"path": [
+						"api-skafka",
+						"login",
+						"cert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "获取登录验证码",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "zh-CN,zh;q=0.9"
+					},
+					{
+						"key": "Cache-Control",
+						"value": "no-cache"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive"
+					},
+					{
+						"key": "Cookie",
+						"value": "clientTimeOffset=-480"
+					},
+					{
+						"key": "Pragma",
+						"value": "no-cache"
+					},
+					{
+						"key": "Referer",
+						"value": "http://10.1.0.180:9091/"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.7 Safari/537.36"
+					}
+				],
+				"url": {
+					"raw": "http://10.1.3.114:7003/api-uaa/validata/code/C4A478B8-1A05-4350-AD7A-605CA5AEED48?t=1650856464827",
+					"protocol": "http",
+					"host": [
+						"10",
+						"1",
+						"3",
+						"114"
+					],
+					"port": "7003",
+					"path": [
+						"api-uaa",
+						"validata",
+						"code",
+						"C4A478B8-1A05-4350-AD7A-605CA5AEED48"
+					],
+					"query": [
+						{
+							"key": "t",
+							"value": "1650856464827"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
