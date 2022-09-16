@@ -28,7 +28,7 @@ public class SocialAutoConfiguration {
     @Bean
     @Primary
     @ConditionalOnProperty(prefix = "justauth", value = "enabled", havingValue = "true", matchIfMissing = true)
-    public AuthRequestFactory socialAuthRequestFactory(JustAuthProperties properties, AuthStateCache authStateCache) {
+    public SocialAuthRequestFactory socialAuthRequestFactory(JustAuthProperties properties, AuthStateCache authStateCache) {
         // 需要修改 HttpUtil 使用的实现，避免类报错
         HttpUtil.setHttp(new HutoolImpl());
         // 创建 YudaoAuthRequestFactory

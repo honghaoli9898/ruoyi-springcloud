@@ -8,6 +8,7 @@ import com.sdps.common.social.core.SocialAuthRequestFactory;
 import com.sdps.common.util.collection.CollectionUtils;
 import com.sdps.common.util.http.HttpUtils;
 import com.sdps.common.util.json.JsonUtils;
+import com.sdps.common.util.spring.SpringUtil;
 import com.sdps.module.system.api.social.dto.SocialUserBindReqDTO;
 import com.sdps.module.system.dal.dataobject.social.SocialUserBindDO;
 import com.sdps.module.system.dal.dataobject.social.SocialUserDO;
@@ -41,8 +42,8 @@ import java.util.List;
 @Slf4j
 public class SocialUserServiceImpl implements SocialUserService {
 
-    @Resource// 由于自定义了 YudaoAuthRequestFactory 无法覆盖默认的 AuthRequestFactory，所以只能注入它
-    private SocialAuthRequestFactory socialAuthRequestFactory;
+//    @Resource// 由于自定义了 YudaoAuthRequestFactory 无法覆盖默认的 AuthRequestFactory，所以只能注入它
+//    private SocialAuthRequestFactory socialAuthRequestFactory;
 
     @Resource
     private SysSocialUserBindMapper socialUserBindMapper;
@@ -52,7 +53,7 @@ public class SocialUserServiceImpl implements SocialUserService {
     @Override
     public String getAuthorizeUrl(Integer type, String redirectUri) {
         // 获得对应的 AuthRequest 实现
-        AuthRequest authRequest = socialAuthRequestFactory.get(SocialTypeEnum.valueOfType(type).getSource());
+        AuthRequest authRequest = SpringUtil.getBean(SocialAuthRequestFactory.class).get(SocialTypeEnum.valueOfType(type).getSource());
         // 生成跳转地址
         String authorizeUri = authRequest.authorize(AuthStateUtils.createState());
         return HttpUtils.replaceUrlQuery(authorizeUri, "redirect_uri", redirectUri);
@@ -161,7 +162,7 @@ public class SocialUserServiceImpl implements SocialUserService {
      * @return 授权的用户
      */
     private AuthUser getAuthUser(Integer type, String code, String state) {
-        AuthRequest authRequest = socialAuthRequestFactory.get(SocialTypeEnum.valueOfType(type).getSource());
+        AuthRequest authRequest = SpringUtil.getBean(SocialAuthRequestFactory.class).get(SocialTypeEnum.valueOfType(type).getSource());
         AuthCallback authCallback = AuthCallback.builder().code(code).state(state).build();
         AuthResponse<?> authResponse = authRequest.login(authCallback);
         log.info("[getAuthUser][请求社交平台 type({}) request({}) response({})]", type,
