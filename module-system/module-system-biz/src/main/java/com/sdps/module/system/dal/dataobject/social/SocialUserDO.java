@@ -20,7 +20,8 @@ import lombok.*;
 @AllArgsConstructor
 public class SocialUserDO extends BaseDO {
 
-    /**
+	private static final long serialVersionUID = 6923243803285100418L;
+	/**
      * 自增主键
      */
     @TableId

@@ -19,7 +19,8 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class DictDataDO extends BaseDO {
 
-    /**
+	private static final long serialVersionUID = 2599351248078794864L;
+	/**
      * 字典数据编号
      */
     @TableId

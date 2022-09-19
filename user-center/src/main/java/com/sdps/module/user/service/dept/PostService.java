@@ -8,11 +8,11 @@ import org.springframework.lang.Nullable;
 import com.sdps.common.enums.CommonStatusEnum;
 import com.sdps.common.pojo.PageResult;
 import com.sdps.common.util.collection.SetUtils;
+import com.sdps.module.system.dal.dataobject.dept.PostDO;
 import com.sdps.module.user.controller.admin.dept.vo.post.PostCreateReqVO;
 import com.sdps.module.user.controller.admin.dept.vo.post.PostExportReqVO;
 import com.sdps.module.user.controller.admin.dept.vo.post.PostPageReqVO;
 import com.sdps.module.user.controller.admin.dept.vo.post.PostUpdateReqVO;
-import com.sdps.module.user.dal.dataobject.dept.PostDO;
 
 /**
  * 岗位 Service 接口
@@ -86,13 +86,5 @@ public interface PostService {
      */
     PostDO getPost(Long id);
 
-    /**
-     * 校验岗位们是否有效。如下情况，视为无效：
-     * 1. 岗位编号不存在
-     * 2. 岗位被禁用
-     *
-     * @param ids 岗位编号数组
-     */
-    void validPosts(Collection<Long> ids);
 
 }

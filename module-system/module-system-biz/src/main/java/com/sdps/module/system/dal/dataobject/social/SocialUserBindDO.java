@@ -21,7 +21,8 @@ import lombok.*;
 @AllArgsConstructor
 public class SocialUserBindDO extends BaseDO {
 
-    /**
+	private static final long serialVersionUID = 2366652584164663807L;
+	/**
      * 编号
      */
     @TableId

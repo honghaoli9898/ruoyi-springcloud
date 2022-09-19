@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sdps.common.enums.CommonStatusEnum;
 import com.sdps.common.pojo.CommonResult;
 import com.sdps.module.system.dal.dataobject.dept.DeptDO;
+import com.sdps.module.system.service.dept.SysDeptService;
 import com.sdps.module.user.controller.admin.dept.vo.dept.DeptCreateReqVO;
 import com.sdps.module.user.controller.admin.dept.vo.dept.DeptListReqVO;
 import com.sdps.module.user.controller.admin.dept.vo.dept.DeptRespVO;
@@ -41,6 +42,8 @@ public class DeptController {
 
 	@Resource
 	private DeptService deptService;
+	@Resource
+	private SysDeptService sysDeptService;
 
 	@PostMapping("create")
 	@ApiOperation("创建部门")
@@ -95,7 +98,7 @@ public class DeptController {
 	@ApiImplicitParam(name = "id", value = "编号", required = true, example = "1024", dataTypeClass = Long.class)
 	@PreAuthorize("@ss.hasPermission('system:dept:query')")
 	public CommonResult<DeptRespVO> getDept(@RequestParam("id") Long id) {
-		return success(DeptConvert.INSTANCE.convert(deptService.getDept(id)));
+		return success(DeptConvert.INSTANCE.convert(sysDeptService.getDept(id)));
 	}
 
 }

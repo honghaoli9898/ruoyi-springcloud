@@ -27,18 +27,19 @@ import com.google.common.annotations.VisibleForTesting;
 import com.sdps.common.enums.CommonStatusEnum;
 import com.sdps.common.exception.ServiceException;
 import com.sdps.common.exception.util.ServiceExceptionUtil;
-import com.sdps.common.model.dataobject.permission.MenuDO;
 import com.sdps.common.model.dataobject.permission.RoleDO;
 import com.sdps.common.model.dataobject.user.AdminUserDO;
 import com.sdps.common.model.user.LoginAppUser;
 import com.sdps.common.pojo.PageResult;
 import com.sdps.common.util.collection.CollectionUtils;
 import com.sdps.module.system.dal.dataobject.dept.DeptDO;
-import com.sdps.module.system.dal.dataobject.permission.RoleMenuDO;
+import com.sdps.module.system.dal.dataobject.dept.UserPostDO;
 import com.sdps.module.system.dal.dataobject.permission.UserRoleDO;
+import com.sdps.module.system.dal.mapper.dept.SysUserPostMapper;
+import com.sdps.module.system.dal.mapper.user.SysAdminUserMapper;
 import com.sdps.module.system.enums.ErrorCodeConstants;
-import com.sdps.module.system.enums.permission.MenuTypeEnum;
 import com.sdps.module.system.service.dept.SysDeptService;
+import com.sdps.module.system.service.dept.SysPostService;
 import com.sdps.module.user.controller.admin.user.vo.profile.UserProfileUpdatePasswordReqVO;
 import com.sdps.module.user.controller.admin.user.vo.profile.UserProfileUpdateReqVO;
 import com.sdps.module.user.controller.admin.user.vo.user.UserCreateReqVO;
@@ -48,7 +49,6 @@ import com.sdps.module.user.controller.admin.user.vo.user.UserImportRespVO;
 import com.sdps.module.user.controller.admin.user.vo.user.UserPageReqVO;
 import com.sdps.module.user.controller.admin.user.vo.user.UserUpdateReqVO;
 import com.sdps.module.user.convert.user.UserConvert;
-import com.sdps.module.user.dal.dataobject.dept.UserPostDO;
 import com.sdps.module.user.dal.mapper.dept.UserPostMapper;
 import com.sdps.module.user.dal.mapper.permission.MenuMapper;
 import com.sdps.module.user.dal.mapper.permission.RoleMapper;
@@ -79,6 +79,8 @@ public class AdminUserServiceImpl implements AdminUserService {
 	@Autowired
 	private PostService postService;
 	@Autowired
+	private SysPostService sysPostService;
+	@Autowired
 	private PermissionService permissionService;
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -95,6 +97,10 @@ public class AdminUserServiceImpl implements AdminUserService {
 	private RoleMenuMapper roleMenuMapper;
 	@Autowired
 	private MenuMapper menuMapper;
+	@Autowired
+	private SysAdminUserMapper sysUserMapper;
+	@Autowired
+	private SysUserPostMapper sysUserPostMapper;
 
 	// @Resource
 	// private FileApi fileApi;
@@ -272,7 +278,7 @@ public class AdminUserServiceImpl implements AdminUserService {
 		if (CollUtil.isEmpty(deptIds)) {
 			return Collections.emptyList();
 		}
-		return userMapper.selectListByDeptIds(deptIds);
+		return sysUserMapper.selectListByDeptIds(deptIds);
 	}
 
 	@Override
@@ -281,7 +287,7 @@ public class AdminUserServiceImpl implements AdminUserService {
 			return Collections.emptyList();
 		}
 		Set<Long> userIds = CollectionUtils.convertSet(
-				userPostMapper.selectListByPostIds(postIds),
+				sysUserPostMapper.selectListByPostIds(postIds),
 				UserPostDO::getUserId);
 		if (CollUtil.isEmpty(userIds)) {
 			return Collections.emptyList();
@@ -365,9 +371,9 @@ public class AdminUserServiceImpl implements AdminUserService {
 		// 校验邮箱唯一
 		checkEmailUnique(id, email);
 		// 校验部门处于开启状态
-		deptService.validDepts(CollectionUtils.singleton(deptId));
+		sysDeptService.validDepts(CollectionUtils.singleton(deptId));
 		// 校验岗位处于开启状态
-		postService.validPosts(postIds);
+		sysPostService.validPosts(postIds);
 	}
 
 	@VisibleForTesting
@@ -558,24 +564,24 @@ public class AdminUserServiceImpl implements AdminUserService {
 			// 设置角色
 			loginAppUser.setRoles(roleDOs);
 
-//			List<RoleMenuDO> menus = roleMenuMapper
-//					.selectListByRoleIds(roleIds);
-//			if (CollUtil.isNotEmpty(menus)) {
-//				Set<Long> permissions = menus.stream()
-//						.map(RoleMenuDO::getMenuId).collect(Collectors.toSet());
-//				List<MenuDO> menuDOs = menuMapper.selectBatchIds(permissions);
-//				// 设置权限集合
-//				loginAppUser
-//						.setPermissions(menuDOs
-//								.stream()
-//								.filter(menuDO -> {
-//											boolean isButton = menuDO.getType().equals(MenuTypeEnum.BUTTON
-//													.getType());
-//											return isButton;
-//										}
-//								).map(MenuDO::getPermission)
-//								.collect(Collectors.toSet()));
-//			}
+			// List<RoleMenuDO> menus = roleMenuMapper
+			// .selectListByRoleIds(roleIds);
+			// if (CollUtil.isNotEmpty(menus)) {
+			// Set<Long> permissions = menus.stream()
+			// .map(RoleMenuDO::getMenuId).collect(Collectors.toSet());
+			// List<MenuDO> menuDOs = menuMapper.selectBatchIds(permissions);
+			// // 设置权限集合
+			// loginAppUser
+			// .setPermissions(menuDOs
+			// .stream()
+			// .filter(menuDO -> {
+			// boolean isButton = menuDO.getType().equals(MenuTypeEnum.BUTTON
+			// .getType());
+			// return isButton;
+			// }
+			// ).map(MenuDO::getPermission)
+			// .collect(Collectors.toSet()));
+			// }
 			return loginAppUser;
 		}
 		return null;

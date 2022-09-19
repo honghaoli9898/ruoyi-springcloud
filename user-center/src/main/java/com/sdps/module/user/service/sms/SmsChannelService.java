@@ -16,6 +16,11 @@ import java.util.List;
  * @date 2021/1/25 9:24
  */
 public interface SmsChannelService {
+	
+    /**
+     * 初始化短信客户端
+     */
+    void initSmsClients();
 
     /**
      * 创建短信渠道

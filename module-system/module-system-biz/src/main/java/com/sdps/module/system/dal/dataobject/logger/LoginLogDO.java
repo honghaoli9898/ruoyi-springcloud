@@ -21,7 +21,8 @@ import lombok.ToString;
 @ToString(callSuper = true)
 public class LoginLogDO extends BaseDO {
 
-    /**
+	private static final long serialVersionUID = -8717686594114543839L;
+	/**
      * 日志主键
      */
     private Long id;

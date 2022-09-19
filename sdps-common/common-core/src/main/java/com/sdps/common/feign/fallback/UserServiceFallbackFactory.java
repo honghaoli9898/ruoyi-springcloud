@@ -1,6 +1,7 @@
 package com.sdps.common.feign.fallback;
 
-import com.sdps.common.pojo.CommonResult;
+import javax.validation.Valid;
+
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.cloud.openfeign.FallbackFactory;
@@ -8,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sdps.common.feign.UserService;
 import com.sdps.common.model.dataobject.user.AdminUserDO;
+import com.sdps.common.model.dto.SmsSendSingleToUserReqDTO;
 import com.sdps.common.model.user.LoginAppUser;
+import com.sdps.common.pojo.CommonResult;
 
 /**
  * userService降级工场
@@ -47,6 +50,12 @@ public class UserServiceFallbackFactory implements FallbackFactory<UserService> 
 			@Override
 			public CommonResult smsLogin(String mobile, String code) {
 				return CommonResult.error(999,mobile);
+			}
+
+			@Override
+			public CommonResult<Long> sendSms(
+					@Valid SmsSendSingleToUserReqDTO sendReqVO) {
+				return CommonResult.error(999,sendReqVO.getTemplateCode());
 			}
 		};
 	}

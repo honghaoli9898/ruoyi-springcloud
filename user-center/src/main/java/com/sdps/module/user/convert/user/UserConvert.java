@@ -9,6 +9,7 @@ import com.sdps.common.model.dataobject.permission.RoleDO;
 import com.sdps.common.model.dataobject.user.AdminUserDO;
 import com.sdps.module.system.api.user.dto.AdminUserRespDTO;
 import com.sdps.module.system.dal.dataobject.dept.DeptDO;
+import com.sdps.module.system.dal.dataobject.dept.PostDO;
 import com.sdps.module.user.controller.admin.user.vo.profile.UserProfileRespVO;
 import com.sdps.module.user.controller.admin.user.vo.profile.UserProfileUpdatePasswordReqVO;
 import com.sdps.module.user.controller.admin.user.vo.profile.UserProfileUpdateReqVO;
@@ -18,7 +19,6 @@ import com.sdps.module.user.controller.admin.user.vo.user.UserImportExcelVO;
 import com.sdps.module.user.controller.admin.user.vo.user.UserPageItemRespVO;
 import com.sdps.module.user.controller.admin.user.vo.user.UserSimpleRespVO;
 import com.sdps.module.user.controller.admin.user.vo.user.UserUpdateReqVO;
-import com.sdps.module.user.dal.dataobject.dept.PostDO;
 
 @Mapper
 public interface UserConvert {

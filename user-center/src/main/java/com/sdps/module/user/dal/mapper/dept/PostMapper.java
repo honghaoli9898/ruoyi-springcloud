@@ -9,9 +9,9 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.sdps.common.mybatis.core.mapper.BaseMapperX;
 import com.sdps.common.mybatis.core.query.QueryWrapperX;
 import com.sdps.common.pojo.PageResult;
+import com.sdps.module.system.dal.dataobject.dept.PostDO;
 import com.sdps.module.user.controller.admin.dept.vo.post.PostExportReqVO;
 import com.sdps.module.user.controller.admin.dept.vo.post.PostPageReqVO;
-import com.sdps.module.user.dal.dataobject.dept.PostDO;
 
 @Mapper
 public interface PostMapper extends BaseMapperX<PostDO> {

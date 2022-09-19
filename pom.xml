@@ -61,6 +61,7 @@
 		<nio-parser.version>1.1.0</nio-parser.version>
         <easy-crypto.version>1.0.basic</easy-crypto.version>
         <ganymed-ssh2.version>build210</ganymed-ssh2.version>
+        <flowable.version>6.7.0</flowable.version>
     </properties>
 
     <modules>
@@ -75,6 +76,7 @@
         <module>module-system</module>
         <module>dynamic-route-server</module>
         <module>user-center</module>
+        <module>module-bpm</module>
     </modules>
 
     <build>
@@ -135,6 +137,16 @@
     </build>
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.flowable</groupId>
+                <artifactId>flowable-spring-boot-starter-process</artifactId>
+                <version>${flowable.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.flowable</groupId>
+                <artifactId>flowable-spring-boot-starter-actuator</artifactId>
+                <version>${flowable.version}</version>
+            </dependency>
             <dependency>
                 <groupId>ch.ethz.ganymed</groupId>
                 <artifactId>ganymed-ssh2</artifactId>

@@ -29,6 +29,7 @@ import com.sdps.common.enums.CommonStatusEnum;
 import com.sdps.common.pojo.CommonResult;
 import com.sdps.common.pojo.PageResult;
 import com.sdps.common.util.excel.ExcelUtils;
+import com.sdps.module.system.dal.dataobject.dept.PostDO;
 import com.sdps.module.user.controller.admin.dept.vo.post.PostCreateReqVO;
 import com.sdps.module.user.controller.admin.dept.vo.post.PostExcelVO;
 import com.sdps.module.user.controller.admin.dept.vo.post.PostExportReqVO;
@@ -37,7 +38,6 @@ import com.sdps.module.user.controller.admin.dept.vo.post.PostRespVO;
 import com.sdps.module.user.controller.admin.dept.vo.post.PostSimpleRespVO;
 import com.sdps.module.user.controller.admin.dept.vo.post.PostUpdateReqVO;
 import com.sdps.module.user.convert.dept.PostConvert;
-import com.sdps.module.user.dal.dataobject.dept.PostDO;
 import com.sdps.module.user.service.dept.PostService;
 @Api(tags = "管理后台 - 岗位")
 @RestController

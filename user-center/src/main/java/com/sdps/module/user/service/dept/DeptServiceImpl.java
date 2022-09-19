@@ -2,17 +2,13 @@ package com.sdps.module.user.service.dept;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
-import cn.hutool.core.collection.CollUtil;
-
 import com.sdps.common.enums.CommonStatusEnum;
 import com.sdps.common.exception.util.ServiceExceptionUtil;
-import com.sdps.common.util.collection.CollectionUtils;
 import com.sdps.module.system.dal.dataobject.dept.DeptDO;
 import com.sdps.module.system.enums.ErrorCodeConstants;
 import com.sdps.module.system.enums.dept.DeptIdEnum;
@@ -154,39 +150,6 @@ public class DeptServiceImpl implements DeptService {
 			throw ServiceExceptionUtil
 					.exception(ErrorCodeConstants.DEPT_NAME_DUPLICATE);
 		}
-	}
-
-	@Override
-	public List<DeptDO> getDepts(Collection<Long> ids) {
-		return deptMapper.selectBatchIds(ids);
-	}
-
-	@Override
-	public DeptDO getDept(Long id) {
-		return deptMapper.selectById(id);
-	}
-
-	@Override
-	public void validDepts(Collection<Long> ids) {
-		if (CollUtil.isEmpty(ids)) {
-			return;
-		}
-		// 获得科室信息
-		List<DeptDO> depts = deptMapper.selectBatchIds(ids);
-		Map<Long, DeptDO> deptMap = CollectionUtils.convertMap(depts,
-				DeptDO::getId);
-		// 校验
-		ids.forEach(id -> {
-			DeptDO dept = deptMap.get(id);
-			if (dept == null) {
-				throw ServiceExceptionUtil
-						.exception(ErrorCodeConstants.DEPT_NOT_FOUND);
-			}
-			if (!CommonStatusEnum.ENABLE.getStatus().equals(dept.getStatus())) {
-				throw ServiceExceptionUtil.exception(
-						ErrorCodeConstants.DEPT_NOT_ENABLE, dept.getName());
-			}
-		});
 	}
 
 	@Override

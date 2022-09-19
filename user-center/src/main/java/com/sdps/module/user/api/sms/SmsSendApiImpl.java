@@ -1,7 +1,8 @@
 package com.sdps.module.user.api.sms;
 
-import com.sdps.module.system.api.sms.dto.send.SmsSendSingleToUserReqDTO;
+import com.sdps.common.model.dto.SmsSendSingleToUserReqDTO;
 import com.sdps.module.user.service.sms.SmsSendService;
+
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 

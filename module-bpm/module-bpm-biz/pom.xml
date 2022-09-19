@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>module-bpm</artifactId>
+        <groupId>com.sdps.framework</groupId>
+        <version>${revision}</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <version>${revision}</version>
+    <artifactId>module-bpm-biz</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.sdps.framework</groupId>
+            <artifactId>module-bpm-api</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sdps.framework</groupId>
+            <artifactId>module-system-biz</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <!-- 业务组件 -->
+        <dependency>
+            <groupId>com.sdps.framework</groupId>
+            <artifactId>data-permission-spring-boot-starter</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <!-- Web 相关 -->
+        <dependency>
+            <groupId>com.sdps.framework</groupId>
+            <artifactId>web-spring-boot-starter</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sdps.framework</groupId>
+            <artifactId>security-spring-boot-starter</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+
+        <!-- 工作流相关 -->
+        <dependency>
+            <groupId>com.sdps.framework</groupId>
+            <artifactId>flowable-spring-boot-starter</artifactId>
+            <version>${revision}</version>
+        </dependency>
+    </dependencies>
+</project>

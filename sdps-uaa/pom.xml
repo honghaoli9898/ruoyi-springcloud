@@ -11,6 +11,16 @@
 	<name>sdps-uaa</name>
 	<dependencies>
 		<dependency>
+			<groupId>com.sdps.framework</groupId>
+			<artifactId>web-spring-boot-starter</artifactId>
+			<version>${revision}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sdps.framework</groupId>
+			<artifactId>biz-dict-spring-boot-starter</artifactId>
+			<version>${revision}</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-config</artifactId>
 		</dependency>

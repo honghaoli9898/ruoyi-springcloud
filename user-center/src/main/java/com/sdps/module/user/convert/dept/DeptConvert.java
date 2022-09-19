@@ -5,7 +5,6 @@ import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-import com.sdps.module.system.api.dept.dto.DeptRespDTO;
 import com.sdps.module.system.dal.dataobject.dept.DeptDO;
 import com.sdps.module.user.controller.admin.dept.vo.dept.DeptCreateReqVO;
 import com.sdps.module.user.controller.admin.dept.vo.dept.DeptRespVO;
@@ -27,6 +26,5 @@ public interface DeptConvert {
 
     DeptDO convert(DeptUpdateReqVO bean);
 
-    List<DeptRespDTO> convertList03(List<DeptDO> list);
 
 }

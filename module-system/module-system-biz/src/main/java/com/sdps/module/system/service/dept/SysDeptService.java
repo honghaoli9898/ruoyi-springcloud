@@ -1,5 +1,6 @@
 package com.sdps.module.system.service.dept;
 
+import java.util.Collection;
 import java.util.List;
 
 import com.sdps.module.system.dal.dataobject.dept.DeptDO;
@@ -27,4 +28,29 @@ public interface SysDeptService {
 	 */
 	List<DeptDO> getDeptsByParentIdFromCache(Long parentId, boolean recursive);
 
+	/**
+	 * 获得部门信息数组
+	 *
+	 * @param ids
+	 *            部门编号数组
+	 * @return 部门信息数组
+	 */
+	List<DeptDO> getDepts(Collection<Long> ids);
+
+	/**
+	 * 获得部门信息
+	 *
+	 * @param id
+	 *            部门编号
+	 * @return 部门信息
+	 */
+	DeptDO getDept(Long id);
+
+	/**
+	 * 校验部门们是否有效。如下情况，视为无效： 1. 部门编号不存在 2. 部门被禁用
+	 *
+	 * @param ids
+	 *            角色编号数组
+	 */
+	void validDepts(Collection<Long> ids);
 }

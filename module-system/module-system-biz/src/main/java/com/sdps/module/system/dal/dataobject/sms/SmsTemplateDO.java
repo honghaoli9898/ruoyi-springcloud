@@ -26,7 +26,9 @@ import java.util.List;
 @ToString(callSuper = true)
 public class SmsTemplateDO extends BaseDO {
 
-    /**
+	private static final long serialVersionUID = -8882294255760420140L;
+
+	/**
      * 自增编号
      */
     private Long id;

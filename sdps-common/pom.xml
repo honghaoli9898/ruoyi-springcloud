@@ -26,6 +26,7 @@
         <module>security-spring-boot-starter</module>
         <module>biz-social-spring-boot-starter</module>
         <module>biz-sms-spring-boot-starter</module>
+        <module>flowable-spring-boot-starter</module>
     </modules>
 	<name>sdps-common</name>
 </project>

@@ -21,7 +21,8 @@ import lombok.ToString;
 @ToString(callSuper = true)
 public class SmsChannelDO extends BaseDO {
 
-    /**
+	private static final long serialVersionUID = -5731823481879203711L;
+	/**
      * 渠道编号
      */
     private Long id;

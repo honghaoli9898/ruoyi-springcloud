@@ -30,7 +30,9 @@ import java.util.Map;
 @NoArgsConstructor
 public class SmsLogDO extends BaseDO {
 
-    /**
+	private static final long serialVersionUID = -8662372431274955960L;
+
+	/**
      * 自增编号
      */
     private Long id;

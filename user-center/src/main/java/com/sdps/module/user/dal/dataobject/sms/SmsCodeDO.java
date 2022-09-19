@@ -23,7 +23,8 @@ import java.util.Date;
 @AllArgsConstructor
 public class SmsCodeDO extends BaseDO {
 
-    /**
+	private static final long serialVersionUID = -128995293597868282L;
+	/**
      * 编号
      */
     private Integer id;

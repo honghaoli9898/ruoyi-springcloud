@@ -22,10 +22,13 @@ import cn.hutool.core.collection.CollUtil;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
+import com.sdps.common.enums.CommonStatusEnum;
+import com.sdps.common.exception.util.ServiceExceptionUtil;
 import com.sdps.common.tenant.core.aop.TenantIgnore;
 import com.sdps.common.util.collection.CollectionUtils;
 import com.sdps.module.system.dal.dataobject.dept.DeptDO;
 import com.sdps.module.system.dal.mapper.dept.SysDeptMapper;
+import com.sdps.module.system.enums.ErrorCodeConstants;
 
 /**
  * 部门 Service 实现类
@@ -165,6 +168,39 @@ public class SysDeptServiceImpl implements SysDeptService {
 		// 继续递归
 		depts.forEach(dept -> getDeptsByParentIdFromCache(result, dept.getId(),
 				recursiveCount - 1, parentDeptMap));
+	}
+
+	@Override
+	public List<DeptDO> getDepts(Collection<Long> ids) {
+		return deptMapper.selectBatchIds(ids);
+	}
+
+	@Override
+	public DeptDO getDept(Long id) {
+		return deptMapper.selectById(id);
+	}
+
+	@Override
+	public void validDepts(Collection<Long> ids) {
+		if (CollUtil.isEmpty(ids)) {
+			return;
+		}
+		// 获得科室信息
+		List<DeptDO> depts = deptMapper.selectBatchIds(ids);
+		Map<Long, DeptDO> deptMap = CollectionUtils.convertMap(depts,
+				DeptDO::getId);
+		// 校验
+		ids.forEach(id -> {
+			DeptDO dept = deptMap.get(id);
+			if (dept == null) {
+				throw ServiceExceptionUtil
+						.exception(ErrorCodeConstants.DEPT_NOT_FOUND);
+			}
+			if (!CommonStatusEnum.ENABLE.getStatus().equals(dept.getStatus())) {
+				throw ServiceExceptionUtil.exception(
+						ErrorCodeConstants.DEPT_NOT_ENABLE, dept.getName());
+			}
+		});
 	}
 
 }

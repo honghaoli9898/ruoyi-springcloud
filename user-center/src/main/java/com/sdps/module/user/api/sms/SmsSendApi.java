@@ -1,6 +1,6 @@
 package com.sdps.module.user.api.sms;
 
-import com.sdps.module.system.api.sms.dto.send.SmsSendSingleToUserReqDTO;
+import com.sdps.common.model.dto.SmsSendSingleToUserReqDTO;
 
 import javax.validation.Valid;
 

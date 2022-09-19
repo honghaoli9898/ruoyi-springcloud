@@ -11,6 +11,26 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.sdps.framework</groupId>
+			<artifactId>biz-dict-spring-boot-starter</artifactId>
+			<version>${revision}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sdps.framework</groupId>
+			<artifactId>biz-sms-spring-boot-starter</artifactId>
+			<version>${revision}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sdps.framework</groupId>
+			<artifactId>web-spring-boot-starter</artifactId>
+			<version>${revision}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sdps.framework</groupId>
+			<artifactId>security-spring-boot-starter</artifactId>
+			<version>${revision}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sdps.framework</groupId>
 			<artifactId>module-system-biz</artifactId>
 			<version>${revision}</version>
 		</dependency>
@@ -39,5 +59,5 @@
 			<groupId>com.sdps.framework</groupId>
 			<artifactId>config-common</artifactId>
 		</dependency>
-    </dependencies>
+	</dependencies>
 </project>

@@ -1,19 +1,21 @@
 package com.sdps.module.system.service.dict;
 
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
 import cn.hutool.core.collection.CollUtil;
+
 import com.sdps.common.enums.CommonStatusEnum;
 import com.sdps.common.exception.util.ServiceExceptionUtil;
 import com.sdps.common.util.collection.CollectionUtils;
 import com.sdps.module.system.dal.dataobject.dict.DictDataDO;
 import com.sdps.module.system.dal.mapper.dict.SysDictDataMapper;
 import com.sdps.module.system.enums.ErrorCodeConstants;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.Map;
 
 
 /**
@@ -22,13 +24,13 @@ import java.util.Map;
  * @author ruoyi
  */
 @Service
-@Slf4j
 public class SysDictDataServiceImpl implements SysDictDataService {
 
     /**
      * 排序 dictType > sort
      */
-    private static final Comparator<DictDataDO> COMPARATOR_TYPE_AND_SORT = Comparator
+    @SuppressWarnings("unused")
+	private static final Comparator<DictDataDO> COMPARATOR_TYPE_AND_SORT = Comparator
             .comparing(DictDataDO::getDictType)
             .thenComparingInt(DictDataDO::getSort);
 

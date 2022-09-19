@@ -1,33 +1,48 @@
 package com.sdps.module.user.service.sms;
 
-import com.sdps.common.pojo.PageResult;
-import com.sdps.module.system.enums.sms.SmsReceiveStatusEnum;
-import com.sdps.module.system.enums.sms.SmsSendStatusEnum;
-import com.sdps.module.user.controller.admin.sms.vo.log.SmsLogExportReqVO;
-import com.sdps.module.user.controller.admin.sms.vo.log.SmsLogPageReqVO;
-import com.sdps.module.system.dal.dataobject.sms.SmsLogDO;
-import com.sdps.module.system.dal.dataobject.sms.SmsTemplateDO;
-import com.sdps.module.user.dal.mapper.sms.SmsLogMapper;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import com.sdps.common.pojo.CommonResult;
+import com.sdps.common.pojo.PageResult;
+import com.sdps.module.system.dal.dataobject.sms.SmsLogDO;
+import com.sdps.module.system.dal.dataobject.sms.SmsTemplateDO;
+import com.sdps.module.system.enums.sms.SmsReceiveStatusEnum;
+import com.sdps.module.system.enums.sms.SmsSendStatusEnum;
+import com.sdps.module.user.controller.admin.sms.vo.log.SmsLogExportReqVO;
+import com.sdps.module.user.controller.admin.sms.vo.log.SmsLogPageReqVO;
+import com.sdps.module.user.dal.mapper.sms.SmsLogMapper;
 
 /**
  * 短信日志 Service 实现类
  *
  * @author zzf
  */
-@Slf4j
 @Service
 public class SmsLogServiceImpl implements SmsLogService {
 
     @Resource
     private SmsLogMapper smsLogMapper;
+
+
+
+    @Override
+    public void updateSmsSendResult(Long id, Integer sendCode, String sendMsg,
+                                    String apiSendCode, String apiSendMsg,
+                                    String apiRequestId, String apiSerialNo) {
+        SmsSendStatusEnum sendStatus = CommonResult.isSuccess(sendCode) ?
+                SmsSendStatusEnum.SUCCESS : SmsSendStatusEnum.FAILURE;
+        smsLogMapper.updateById(SmsLogDO.builder().id(id).sendStatus(sendStatus.getStatus())
+                .sendTime(new Date()).sendCode(sendCode).sendMsg(sendMsg)
+                .apiSendCode(apiSendCode).apiSendMsg(apiSendMsg)
+                .apiRequestId(apiRequestId).apiSerialNo(apiSerialNo).build());
+    }
 
     @Override
     public Long createSmsLog(String mobile, Long userId, Integer userType, Boolean isSend,

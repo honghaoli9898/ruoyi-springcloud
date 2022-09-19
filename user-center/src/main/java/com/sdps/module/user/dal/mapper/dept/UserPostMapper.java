@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.sdps.common.mybatis.core.mapper.BaseMapperX;
 import com.sdps.common.mybatis.core.query.LambdaQueryWrapperX;
-import com.sdps.module.user.dal.dataobject.dept.UserPostDO;
+import com.sdps.module.system.dal.dataobject.dept.UserPostDO;
 
 @Mapper
 public interface UserPostMapper extends BaseMapperX<UserPostDO> {
@@ -21,11 +21,6 @@ public interface UserPostMapper extends BaseMapperX<UserPostDO> {
     default void deleteByUserIdAndPostId(Long userId, Collection<Long> postIds) {
         delete(new LambdaQueryWrapperX<UserPostDO>()
                 .eq(UserPostDO::getUserId, userId)
-                .in(UserPostDO::getPostId, postIds));
-    }
-
-    default List<UserPostDO> selectListByPostIds(Collection<Long> postIds) {
-        return selectList(new LambdaQueryWrapperX<UserPostDO>()
                 .in(UserPostDO::getPostId, postIds));
     }
 
