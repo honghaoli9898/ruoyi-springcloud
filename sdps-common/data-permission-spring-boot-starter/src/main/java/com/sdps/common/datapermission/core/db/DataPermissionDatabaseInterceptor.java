@@ -1,44 +1,27 @@
 package com.sdps.common.datapermission.core.db;
 
-import java.sql.Connection;
-import java.util.Collection;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-
+import cn.hutool.core.collection.CollUtil;
+import com.sdps.common.util.collection.SetUtils;
+import com.sdps.common.datapermission.core.rule.DataPermissionRule;
+import com.sdps.common.datapermission.core.rule.DataPermissionRuleFactory;
+import com.sdps.common.mybatis.core.util.MyBatisUtils;
+import com.alibaba.ttl.TransmittableThreadLocal;
+import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
+import com.baomidou.mybatisplus.core.toolkit.PluginUtils;
+import com.baomidou.mybatisplus.extension.parser.JsqlParserSupport;
+import com.baomidou.mybatisplus.extension.plugins.inner.InnerInterceptor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import net.sf.jsqlparser.expression.BinaryExpression;
-import net.sf.jsqlparser.expression.Expression;
-import net.sf.jsqlparser.expression.Function;
-import net.sf.jsqlparser.expression.NotExpression;
-import net.sf.jsqlparser.expression.Parenthesis;
+import net.sf.jsqlparser.expression.*;
 import net.sf.jsqlparser.expression.operators.conditional.AndExpression;
 import net.sf.jsqlparser.expression.operators.conditional.OrExpression;
 import net.sf.jsqlparser.expression.operators.relational.ExistsExpression;
 import net.sf.jsqlparser.expression.operators.relational.ExpressionList;
 import net.sf.jsqlparser.expression.operators.relational.InExpression;
-import net.sf.jsqlparser.expression.operators.relational.ItemsList;
 import net.sf.jsqlparser.schema.Table;
 import net.sf.jsqlparser.statement.delete.Delete;
-import net.sf.jsqlparser.statement.select.FromItem;
-import net.sf.jsqlparser.statement.select.Join;
-import net.sf.jsqlparser.statement.select.LateralSubSelect;
-import net.sf.jsqlparser.statement.select.PlainSelect;
-import net.sf.jsqlparser.statement.select.Select;
-import net.sf.jsqlparser.statement.select.SelectBody;
-import net.sf.jsqlparser.statement.select.SelectExpressionItem;
-import net.sf.jsqlparser.statement.select.SelectItem;
-import net.sf.jsqlparser.statement.select.SetOperationList;
-import net.sf.jsqlparser.statement.select.SubJoin;
-import net.sf.jsqlparser.statement.select.SubSelect;
-import net.sf.jsqlparser.statement.select.ValuesList;
-import net.sf.jsqlparser.statement.select.WithItem;
+import net.sf.jsqlparser.statement.select.*;
 import net.sf.jsqlparser.statement.update.Update;
-
 import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.mapping.BoundSql;
@@ -47,46 +30,31 @@ import org.apache.ibatis.mapping.SqlCommandType;
 import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
 
-import cn.hutool.core.collection.CollUtil;
-
-import com.alibaba.ttl.TransmittableThreadLocal;
-import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
-import com.baomidou.mybatisplus.core.toolkit.PluginUtils;
-import com.baomidou.mybatisplus.extension.parser.JsqlParserSupport;
-import com.baomidou.mybatisplus.extension.plugins.inner.InnerInterceptor;
-import com.sdps.common.datapermission.core.rule.DataPermissionRule;
-import com.sdps.common.datapermission.core.rule.DataPermissionRuleFactory;
-import com.sdps.common.mybatis.core.util.MyBatisUtils;
-import com.sdps.common.util.collection.SetUtils;
+import java.sql.Connection;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * 数据权限拦截器，通过 {@link DataPermissionRule} 数据权限规则，重写 SQL 的方式来实现 主要的 SQL 重写方法，可见
- * {@link #builderExpression(Expression, Table)} 方法
+ * 数据权限拦截器，通过 {@link DataPermissionRule} 数据权限规则，重写 SQL 的方式来实现
+ * 主要的 SQL 重写方法，可见 {@link #builderExpression(Expression, List)} 方法
  *
- * 整体的代码实现上，参考
- * {@link com.baomidou.mybatisplus.extension.plugins.inner.TenantLineInnerInterceptor}
- * 实现。 所以每次 MyBatis Plus 升级时，需要 Review 下其具体的实现是否有变更！
+ * 整体的代码实现上，参考 {@link com.baomidou.mybatisplus.extension.plugins.inner.TenantLineInnerInterceptor} 实现。
+ * 所以每次 MyBatis Plus 升级时，需要 Review 下其具体的实现是否有变更！
  *
  * @author 芋道源码
  */
 @RequiredArgsConstructor
-public class DataPermissionDatabaseInterceptor extends JsqlParserSupport
-		implements InnerInterceptor {
+public class DataPermissionDatabaseInterceptor extends JsqlParserSupport implements InnerInterceptor {
 
 	private final DataPermissionRuleFactory ruleFactory;
 
 	@Getter
 	private final MappedStatementCache mappedStatementCache = new MappedStatementCache();
 
-	@SuppressWarnings("rawtypes")
-	@Override
-	// SELECT 场景
-	public void beforeQuery(Executor executor, MappedStatement ms,
-			Object parameter, RowBounds rowBounds, ResultHandler resultHandler,
-			BoundSql boundSql) {
+	@Override // SELECT 场景
+	public void beforeQuery(Executor executor, MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler, BoundSql boundSql) {
 		// 获得 Mapper 对应的数据权限的规则
-		List<DataPermissionRule> rules = ruleFactory.getDataPermissionRule(ms
-				.getId());
+		List<DataPermissionRule> rules = ruleFactory.getDataPermissionRule(ms.getId());
 		if (mappedStatementCache.noRewritable(ms, rules)) { // 如果无需重写，则跳过
 			return;
 		}
@@ -98,23 +66,21 @@ public class DataPermissionDatabaseInterceptor extends JsqlParserSupport
 			// 处理 SQL
 			mpBs.sql(parserSingle(mpBs.sql(), null));
 		} finally {
+			// 添加是否需要重写的缓存
 			addMappedStatementCache(ms);
+			// 清空上下文
 			ContextHolder.clear();
 		}
 	}
 
-	@Override
-	// 只处理 UPDATE / DELETE 场景，不处理 INSERT 场景
-	public void beforePrepare(StatementHandler sh, Connection connection,
-			Integer transactionTimeout) {
-		PluginUtils.MPStatementHandler mpSh = PluginUtils
-				.mpStatementHandler(sh);
+	@Override // 只处理 UPDATE / DELETE 场景，不处理 INSERT 场景（因为 INSERT 不需要数据权限)
+	public void beforePrepare(StatementHandler sh, Connection connection, Integer transactionTimeout) {
+		PluginUtils.MPStatementHandler mpSh = PluginUtils.mpStatementHandler(sh);
 		MappedStatement ms = mpSh.mappedStatement();
 		SqlCommandType sct = ms.getSqlCommandType();
 		if (sct == SqlCommandType.UPDATE || sct == SqlCommandType.DELETE) {
 			// 获得 Mapper 对应的数据权限的规则
-			List<DataPermissionRule> rules = ruleFactory
-					.getDataPermissionRule(ms.getId());
+			List<DataPermissionRule> rules = ruleFactory.getDataPermissionRule(ms.getId());
 			if (mappedStatementCache.noRewritable(ms, rules)) { // 如果无需重写，则跳过
 				return;
 			}
@@ -126,21 +92,41 @@ public class DataPermissionDatabaseInterceptor extends JsqlParserSupport
 				// 处理 SQL
 				mpBs.sql(parserMulti(mpBs.sql(), null));
 			} finally {
+				// 添加是否需要重写的缓存
 				addMappedStatementCache(ms);
+				// 清空上下文
 				ContextHolder.clear();
 			}
 		}
 	}
 
 	@Override
-	protected void processSelect(Select select, int index, String sql,
-			Object obj) {
+	protected void processSelect(Select select, int index, String sql, Object obj) {
 		processSelectBody(select.getSelectBody());
 		List<WithItem> withItemsList = select.getWithItemsList();
 		if (!CollectionUtils.isEmpty(withItemsList)) {
 			withItemsList.forEach(this::processSelectBody);
 		}
 	}
+
+	/**
+	 * update 语句处理
+	 */
+	@Override
+	protected void processUpdate(Update update, int index, String sql, Object obj) {
+		final Table table = update.getTable();
+		update.setWhere(this.builderExpression(update.getWhere(), table));
+	}
+
+	/**
+	 * delete 语句处理
+	 */
+	@Override
+	protected void processDelete(Delete delete, int index, String sql, Object obj) {
+		delete.setWhere(this.builderExpression(delete.getWhere(), delete.getTable()));
+	}
+
+	// ========== 和 TenantLineInnerInterceptor 一致的逻辑 ==========
 
 	protected void processSelectBody(SelectBody selectBody) {
 		if (selectBody == null) {
@@ -153,73 +139,92 @@ public class DataPermissionDatabaseInterceptor extends JsqlParserSupport
 			processSelectBody(withItem.getSubSelect().getSelectBody());
 		} else {
 			SetOperationList operationList = (SetOperationList) selectBody;
-			List<SelectBody> selectBodys = operationList.getSelects();
-			if (CollectionUtils.isNotEmpty(selectBodys)) {
-				selectBodys.forEach(this::processSelectBody);
+			List<SelectBody> selectBodyList = operationList.getSelects();
+			if (CollectionUtils.isNotEmpty(selectBodyList)) {
+				selectBodyList.forEach(this::processSelectBody);
 			}
 		}
-	}
-
-	/**
-	 * update 语句处理
-	 */
-	@Override
-	protected void processUpdate(Update update, int index, String sql,
-			Object obj) {
-		final Table table = update.getTable();
-		update.setWhere(this.builderExpression(update.getWhere(), table));
-	}
-
-	/**
-	 * delete 语句处理
-	 */
-	@Override
-	protected void processDelete(Delete delete, int index, String sql,
-			Object obj) {
-		delete.setWhere(this.builderExpression(delete.getWhere(),
-				delete.getTable()));
 	}
 
 	/**
 	 * 处理 PlainSelect
 	 */
 	protected void processPlainSelect(PlainSelect plainSelect) {
-		FromItem fromItem = plainSelect.getFromItem();
-		Expression where = plainSelect.getWhere();
-		processWhereSubSelect(where);
-		if (fromItem instanceof Table) {
-			Table fromTable = (Table) fromItem;
-			plainSelect.setWhere(builderExpression(where, fromTable));
-		} else {
-			processFromItem(fromItem);
-		}
-		// #3087 github
+		//#3087 github
 		List<SelectItem> selectItems = plainSelect.getSelectItems();
 		if (CollectionUtils.isNotEmpty(selectItems)) {
 			selectItems.forEach(this::processSelectItem);
 		}
+
+		// 处理 where 中的子查询
+		Expression where = plainSelect.getWhere();
+		processWhereSubSelect(where);
+
+		// 处理 fromItem
+		FromItem fromItem = plainSelect.getFromItem();
+		List<Table> list = processFromItem(fromItem);
+		List<Table> mainTables = new ArrayList<>(list);
+
+		// 处理 join
 		List<Join> joins = plainSelect.getJoins();
 		if (CollectionUtils.isNotEmpty(joins)) {
-			processJoins(joins);
+			mainTables = processJoins(mainTables, joins);
 		}
+
+		// 当有 mainTable 时，进行 where 条件追加
+		if (CollectionUtils.isNotEmpty(mainTables)) {
+			plainSelect.setWhere(builderExpression(where, mainTables));
+		}
+	}
+
+	private List<Table> processFromItem(FromItem fromItem) {
+		// 处理括号括起来的表达式
+		while (fromItem instanceof ParenthesisFromItem) {
+			fromItem = ((ParenthesisFromItem) fromItem).getFromItem();
+		}
+
+		List<Table> mainTables = new ArrayList<>();
+		// 无 join 时的处理逻辑
+		if (fromItem instanceof Table) {
+			Table fromTable = (Table) fromItem;
+			mainTables.add(fromTable);
+		} else if (fromItem instanceof SubJoin) {
+			// SubJoin 类型则还需要添加上 where 条件
+			List<Table> tables = processSubJoin((SubJoin) fromItem);
+			mainTables.addAll(tables);
+		} else {
+			// 处理下 fromItem
+			processOtherFromItem(fromItem);
+		}
+		return mainTables;
 	}
 
 	/**
 	 * 处理where条件内的子查询
 	 * <p>
-	 * 支持如下: 1. in 2. = 3. > 4. < 5. >= 6. <= 7. <> 8. EXISTS 9. NOT EXISTS
+	 * 支持如下:
+	 * 1. in
+	 * 2. =
+	 * 3. >
+	 * 4. <
+	 * 5. >=
+	 * 6. <=
+	 * 7. <>
+	 * 8. EXISTS
+	 * 9. NOT EXISTS
 	 * <p>
-	 * 前提条件: 1. 子查询必须放在小括号中 2. 子查询一般放在比较操作符的右边
+	 * 前提条件:
+	 * 1. 子查询必须放在小括号中
+	 * 2. 子查询一般放在比较操作符的右边
 	 *
-	 * @param where
-	 *            where 条件
+	 * @param where where 条件
 	 */
 	protected void processWhereSubSelect(Expression where) {
 		if (where == null) {
 			return;
 		}
 		if (where instanceof FromItem) {
-			processFromItem((FromItem) where);
+			processOtherFromItem((FromItem) where);
 			return;
 		}
 		if (where.toString().indexOf("SELECT") > 0) {
@@ -232,9 +237,9 @@ public class DataPermissionDatabaseInterceptor extends JsqlParserSupport
 			} else if (where instanceof InExpression) {
 				// in
 				InExpression expression = (InExpression) where;
-				ItemsList itemsList = expression.getRightItemsList();
-				if (itemsList instanceof SubSelect) {
-					processSelectBody(((SubSelect) itemsList).getSelectBody());
+				Expression inExpression = expression.getRightExpression();
+				if (inExpression instanceof SubSelect) {
+					processSelectBody(((SubSelect) inExpression).getSelectBody());
 				}
 			} else if (where instanceof ExistsExpression) {
 				// exists
@@ -255,8 +260,7 @@ public class DataPermissionDatabaseInterceptor extends JsqlParserSupport
 		if (selectItem instanceof SelectExpressionItem) {
 			SelectExpressionItem selectExpressionItem = (SelectExpressionItem) selectItem;
 			if (selectExpressionItem.getExpression() instanceof SubSelect) {
-				processSelectBody(((SubSelect) selectExpressionItem
-						.getExpression()).getSelectBody());
+				processSelectBody(((SubSelect) selectExpressionItem.getExpression()).getSelectBody());
 			} else if (selectExpressionItem.getExpression() instanceof Function) {
 				processFunction((Function) selectExpressionItem.getExpression());
 			}
@@ -265,50 +269,40 @@ public class DataPermissionDatabaseInterceptor extends JsqlParserSupport
 
 	/**
 	 * 处理函数
-	 * <p>
-	 * 支持: 1. select fun(args..) 2. select fun1(fun2(args..),args..)
-	 * <p>
-	 * <p>
-	 * fixed gitee pulls/141
-	 * </p>
+	 * <p>支持: 1. select fun(args..) 2. select fun1(fun2(args..),args..)<p>
+	 * <p> fixed gitee pulls/141</p>
 	 *
 	 * @param function
-	 *            函数
 	 */
 	protected void processFunction(Function function) {
 		ExpressionList parameters = function.getParameters();
 		if (parameters != null) {
-			parameters.getExpressions().forEach(
-					expression -> {
-						if (expression instanceof SubSelect) {
-							processSelectBody(((SubSelect) expression)
-									.getSelectBody());
-						} else if (expression instanceof Function) {
-							processFunction((Function) expression);
-						}
-					});
+			parameters.getExpressions().forEach(expression -> {
+				if (expression instanceof SubSelect) {
+					processSelectBody(((SubSelect) expression).getSelectBody());
+				} else if (expression instanceof Function) {
+					processFunction((Function) expression);
+				}
+			});
 		}
 	}
 
 	/**
 	 * 处理子查询等
 	 */
-	protected void processFromItem(FromItem fromItem) {
-		if (fromItem instanceof SubJoin) {
-			SubJoin subJoin = (SubJoin) fromItem;
-			if (subJoin.getJoinList() != null) {
-				processJoins(subJoin.getJoinList());
-			}
-			if (subJoin.getLeft() != null) {
-				processFromItem(subJoin.getLeft());
-			}
-		} else if (fromItem instanceof SubSelect) {
+	protected void processOtherFromItem(FromItem fromItem) {
+		// 去除括号
+		while (fromItem instanceof ParenthesisFromItem) {
+			fromItem = ((ParenthesisFromItem) fromItem).getFromItem();
+		}
+
+		if (fromItem instanceof SubSelect) {
 			SubSelect subSelect = (SubSelect) fromItem;
 			if (subSelect.getSelectBody() != null) {
 				processSelectBody(subSelect.getSelectBody());
 			}
 		} else if (fromItem instanceof ValuesList) {
-			logger.debug("Perform a subquery, if you do not give us feedback");
+			logger.debug("Perform a subQuery, if you do not give us feedback");
 		} else if (fromItem instanceof LateralSubSelect) {
 			LateralSubSelect lateralSubSelect = (LateralSubSelect) fromItem;
 			if (lateralSubSelect.getSubSelect() != null) {
@@ -321,88 +315,181 @@ public class DataPermissionDatabaseInterceptor extends JsqlParserSupport
 	}
 
 	/**
+	 * 处理 sub join
+	 *
+	 * @param subJoin subJoin
+	 * @return Table subJoin 中的主表
+	 */
+	private List<Table> processSubJoin(SubJoin subJoin) {
+		List<Table> mainTables = new ArrayList<>();
+		if (subJoin.getJoinList() != null) {
+			List<Table> list = processFromItem(subJoin.getLeft());
+			mainTables.addAll(list);
+			mainTables = processJoins(mainTables, subJoin.getJoinList());
+		}
+		return mainTables;
+	}
+
+	/**
 	 * 处理 joins
 	 *
-	 * @param joins
-	 *            join 集合
+	 * @param mainTables 可以为 null
+	 * @param joins      join 集合
+	 * @return List<Table> 右连接查询的 Table 列表
 	 */
-	private void processJoins(List<Join> joins) {
-		// 对于 on 表达式写在最后的 join，需要记录下前面多个 on 的表名
-		Deque<Table> tables = new LinkedList<>();
+	private List<Table> processJoins(List<Table> mainTables, List<Join> joins) {
+		// join 表达式中最终的主表
+		Table mainTable = null;
+		// 当前 join 的左表
+		Table leftTable = null;
+
+		if (mainTables == null) {
+			mainTables = new ArrayList<>();
+		} else if (mainTables.size() == 1) {
+			mainTable = mainTables.get(0);
+			leftTable = mainTable;
+		}
+
+		//对于 on 表达式写在最后的 join，需要记录下前面多个 on 的表名
+		Deque<List<Table>> onTableDeque = new LinkedList<>();
 		for (Join join : joins) {
 			// 处理 on 表达式
-			FromItem fromItem = join.getRightItem();
-			if (fromItem instanceof Table) {
-				Table fromTable = (Table) fromItem;
-				// 获取 join 尾缀的 on 表达式列表
-				Collection<Expression> originOnExpressions = join
-						.getOnExpressions();
-				// 正常 join on 表达式只有一个，立刻处理
-				if (originOnExpressions.size() == 1) {
-					processJoin(join);
+			FromItem joinItem = join.getRightItem();
+
+			// 获取当前 join 的表，subJoint 可以看作是一张表
+			List<Table> joinTables = null;
+			if (joinItem instanceof Table) {
+				joinTables = new ArrayList<>();
+				joinTables.add((Table) joinItem);
+			} else if (joinItem instanceof SubJoin) {
+				joinTables = processSubJoin((SubJoin) joinItem);
+			}
+
+			if (joinTables != null) {
+
+				// 如果是隐式内连接
+				if (join.isSimple()) {
+					mainTables.addAll(joinTables);
 					continue;
 				}
-				tables.push(fromTable);
+
+				// 当前表是否忽略
+				Table joinTable = joinTables.get(0);
+
+				List<Table> onTables = null;
+				// 如果不要忽略，且是右连接，则记录下当前表
+				if (join.isRight()) {
+					mainTable = joinTable;
+					if (leftTable != null) {
+						onTables = Collections.singletonList(leftTable);
+					}
+				} else if (join.isLeft()) {
+					onTables = Collections.singletonList(joinTable);
+				} else if (join.isInner()) {
+					if (mainTable == null) {
+						onTables = Collections.singletonList(joinTable);
+					} else {
+						onTables = Arrays.asList(mainTable, joinTable);
+					}
+					mainTable = null;
+				}
+
+				mainTables = new ArrayList<>();
+				if (mainTable != null) {
+					mainTables.add(mainTable);
+				}
+
+				// 获取 join 尾缀的 on 表达式列表
+				Collection<Expression> originOnExpressions = join.getOnExpressions();
+				// 正常 join on 表达式只有一个，立刻处理
+				if (originOnExpressions.size() == 1 && onTables != null) {
+					List<Expression> onExpressions = new LinkedList<>();
+					onExpressions.add(builderExpression(originOnExpressions.iterator().next(), onTables));
+					join.setOnExpressions(onExpressions);
+					leftTable = joinTable;
+					continue;
+				}
+				// 表名压栈，忽略的表压入 null，以便后续不处理
+				onTableDeque.push(onTables);
 				// 尾缀多个 on 表达式的时候统一处理
 				if (originOnExpressions.size() > 1) {
 					Collection<Expression> onExpressions = new LinkedList<>();
 					for (Expression originOnExpression : originOnExpressions) {
-						Table currentTable = tables.poll();
-						onExpressions.add(builderExpression(originOnExpression,
-								currentTable));
+						List<Table> currentTableList = onTableDeque.poll();
+						if (CollectionUtils.isEmpty(currentTableList)) {
+							onExpressions.add(originOnExpression);
+						} else {
+							onExpressions.add(builderExpression(originOnExpression, currentTableList));
+						}
 					}
 					join.setOnExpressions(onExpressions);
 				}
+				leftTable = joinTable;
 			} else {
-				// 处理右边连接的子表达式
-				processFromItem(fromItem);
+				processOtherFromItem(joinItem);
+				leftTable = null;
 			}
 		}
+
+		return mainTables;
 	}
 
+	// ========== 和 TenantLineInnerInterceptor 存在差异的逻辑：关键，实现权限条件的拼接 ==========
+
 	/**
-	 * 处理联接语句
+	 * 处理条件
+	 *
+	 * @param currentExpression 当前 where 条件
+	 * @param table             单个表
 	 */
-	protected void processJoin(Join join) {
-		if (join.getRightItem() instanceof Table) {
-			Table fromTable = (Table) join.getRightItem();
-			Expression originOnExpression = CollUtil.getFirst(join
-					.getOnExpressions());
-			originOnExpression = builderExpression(originOnExpression,
-					fromTable);
-			join.setOnExpressions(CollUtil.newArrayList(originOnExpression));
-		}
+	protected Expression builderExpression(Expression currentExpression, Table table) {
+		return this.builderExpression(currentExpression, Collections.singletonList(table));
 	}
 
 	/**
 	 * 处理条件
+	 *
+	 * @param currentExpression 当前 where 条件
+	 * @param tables 多个表
 	 */
-	protected Expression builderExpression(Expression currentExpression,
-			Table table) {
-		// 获得 Table 对应的数据权限条件
-		Expression equalsTo = buildDataPermissionExpression(table);
-		if (equalsTo == null) { // 如果没条件，则返回 currentExpression 默认
+	protected Expression builderExpression(Expression currentExpression, List<Table> tables) {
+		// 没有表需要处理直接返回
+		if (CollectionUtils.isEmpty(tables)) {
 			return currentExpression;
 		}
 
-		// 表达式为空，则直接返回 equalsTo
+		// 第一步，获得 Table 对应的数据权限条件
+		Expression dataPermissionExpression = null;
+		for (Table table : tables) {
+			// 构建每个表的权限 Expression 条件
+			Expression expression = buildDataPermissionExpression(table);
+			if (expression == null) {
+				continue;
+			}
+			// 合并到 dataPermissionExpression 中
+			dataPermissionExpression = dataPermissionExpression == null ? expression
+					: new AndExpression(dataPermissionExpression, expression);
+		}
+
+		// 第二步，合并多个 Expression 条件
+		if (dataPermissionExpression == null) {
+			return currentExpression;
+		}
 		if (currentExpression == null) {
-			return equalsTo;
+			return dataPermissionExpression;
 		}
-		// 如果表达式为 Or，则需要 (currentExpression) AND equalsTo
+		// ① 如果表达式为 Or，则需要 (currentExpression) AND dataPermissionExpression
 		if (currentExpression instanceof OrExpression) {
-			return new AndExpression(new Parenthesis(currentExpression),
-					equalsTo);
+			return new AndExpression(new Parenthesis(currentExpression), dataPermissionExpression);
 		}
-		// 如果表达式为 And，则直接返回 currentExpression AND equalsTo
-		return new AndExpression(currentExpression, equalsTo);
+		// ② 如果表达式为 And，则直接返回 where AND dataPermissionExpression
+		return new AndExpression(currentExpression, dataPermissionExpression);
 	}
 
 	/**
 	 * 构建指定表的数据权限的 Expression 过滤条件
 	 *
-	 * @param table
-	 *            表
+	 * @param table 表
 	 * @return Expression 过滤条件
 	 */
 	private Expression buildDataPermissionExpression(Table table) {
@@ -414,15 +501,13 @@ public class DataPermissionDatabaseInterceptor extends JsqlParserSupport
 				continue;
 			}
 			// 如果有匹配的规则，说明可重写。
-			// 为什么不是有 allExpression 非空才重写呢？在生成 column = value 过滤条件时，会因为 value
-			// 不存在，导致未重写。
+			// 为什么不是有 allExpression 非空才重写呢？在生成 column = value 过滤条件时，会因为 value 不存在，导致未重写。
 			// 这样导致第一次无 value，被标记成无需重写；但是第二次有 value，此时会需要重写。
 			ContextHolder.setRewrite(true);
 
 			// 单条规则的条件
 			String tableName = MyBatisUtils.getTableName(table);
-			Expression oneExpress = rule.getExpression(tableName,
-					table.getAlias());
+			Expression oneExpress = rule.getExpression(tableName, table.getAlias());
 			// 拼接到 allExpression 中
 			allExpression = allExpression == null ? oneExpress
 					: new AndExpression(allExpression, oneExpress);
@@ -434,8 +519,7 @@ public class DataPermissionDatabaseInterceptor extends JsqlParserSupport
 	/**
 	 * 判断 SQL 是否重写。如果没有重写，则添加到 {@link MappedStatementCache} 中
 	 *
-	 * @param ms
-	 *            MappedStatement
+	 * @param ms MappedStatement
 	 */
 	private void addMappedStatementCache(MappedStatement ms) {
 		if (ContextHolder.getRewrite()) {
@@ -486,8 +570,9 @@ public class DataPermissionDatabaseInterceptor extends JsqlParserSupport
 	}
 
 	/**
-	 * {@link MappedStatement} 缓存 目前主要用于，记录 {@link DataPermissionRule} 是否对指定
-	 * {@link MappedStatement} 无效 如果无效，则可以避免 SQL 的解析，加快速度
+	 * {@link MappedStatement} 缓存
+	 * 目前主要用于，记录 {@link DataPermissionRule} 是否对指定 {@link MappedStatement} 无效
+	 * 如果无效，则可以避免 SQL 的解析，加快速度
 	 *
 	 * @author 芋道源码
 	 */
@@ -502,24 +587,21 @@ public class DataPermissionDatabaseInterceptor extends JsqlParserSupport
 		private final Map<Class<? extends DataPermissionRule>, Set<String>> noRewritableMappedStatements = new ConcurrentHashMap<>();
 
 		/**
-		 * 判断是否无需重写 ps：虽然有点中文式英语，但是容易读懂即可
+		 * 判断是否无需重写
+		 * ps：虽然有点中文式英语，但是容易读懂即可
 		 *
-		 * @param ms
-		 *            MappedStatement
-		 * @param rules
-		 *            数据权限规则数组
+		 * @param ms MappedStatement
+		 * @param rules 数据权限规则数组
 		 * @return 是否无需重写
 		 */
-		public boolean noRewritable(MappedStatement ms,
-				List<DataPermissionRule> rules) {
+		public boolean noRewritable(MappedStatement ms, List<DataPermissionRule> rules) {
 			// 如果规则为空，说明无需重写
 			if (CollUtil.isEmpty(rules)) {
 				return true;
 			}
 			// 任一规则不在 noRewritableMap 中，则说明可能需要重写
 			for (DataPermissionRule rule : rules) {
-				Set<String> mappedStatementIds = noRewritableMappedStatements
-						.get(rule.getClass());
+				Set<String> mappedStatementIds = noRewritableMappedStatements.get(rule.getClass());
 				if (!CollUtil.contains(mappedStatementIds, ms.getId())) {
 					return false;
 				}
@@ -530,27 +612,23 @@ public class DataPermissionDatabaseInterceptor extends JsqlParserSupport
 		/**
 		 * 添加无需重写的 MappedStatement
 		 *
-		 * @param ms
-		 *            MappedStatement
-		 * @param rules
-		 *            数据权限规则数组
+		 * @param ms MappedStatement
+		 * @param rules 数据权限规则数组
 		 */
-		public void addNoRewritable(MappedStatement ms,
-				List<DataPermissionRule> rules) {
+		public void addNoRewritable(MappedStatement ms, List<DataPermissionRule> rules) {
 			for (DataPermissionRule rule : rules) {
-				Set<String> mappedStatementIds = noRewritableMappedStatements
-						.get(rule.getClass());
+				Set<String> mappedStatementIds = noRewritableMappedStatements.get(rule.getClass());
 				if (CollUtil.isNotEmpty(mappedStatementIds)) {
 					mappedStatementIds.add(ms.getId());
 				} else {
-					noRewritableMappedStatements.put(rule.getClass(),
-							SetUtils.asSet(ms.getId()));
+					noRewritableMappedStatements.put(rule.getClass(), SetUtils.asSet(ms.getId()));
 				}
 			}
 		}
 
 		/**
-		 * 清空缓存 目前主要提供给单元测试
+		 * 清空缓存
+		 * 目前主要提供给单元测试
 		 */
 		public void clear() {
 			noRewritableMappedStatements.clear();
@@ -559,3 +637,4 @@ public class DataPermissionDatabaseInterceptor extends JsqlParserSupport
 	}
 
 }
+

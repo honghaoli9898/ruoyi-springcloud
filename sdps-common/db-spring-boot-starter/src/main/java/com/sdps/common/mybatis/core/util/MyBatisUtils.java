@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import net.sf.jsqlparser.expression.Alias;
 import net.sf.jsqlparser.schema.Column;
 import net.sf.jsqlparser.schema.Table;
@@ -79,7 +80,10 @@ public class MyBatisUtils {
      * @return Column 对象
      */
     public static Column buildColumn(String tableName, Alias tableAlias, String column) {
-        return new Column(tableAlias != null ? tableAlias.getName() + "." + column : column);
+        if (tableAlias != null) {
+            tableName = tableAlias.getName();
+        }
+        return new Column(tableName + StringPool.DOT + column);
     }
 
 }
