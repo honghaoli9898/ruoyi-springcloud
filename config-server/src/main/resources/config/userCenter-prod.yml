@@ -12,6 +12,9 @@ spring:
         filters: stat,slf4j,wall
 
 sdps:
+  web:
+    admin-ui:
+      url: http://127.0.0.1:7003/api-user
   security:
     permit-all_urls:
       - /admin-api/system/user/login

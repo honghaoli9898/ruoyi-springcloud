@@ -17,6 +17,9 @@ mybatis-plus:
 
 
 sdps:
+  web:
+    admin-ui:
+      url: http://127.0.0.1:7003/api-uaa
   swagger:
     enable: false
   xss:

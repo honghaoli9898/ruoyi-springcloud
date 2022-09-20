@@ -119,21 +119,15 @@ sdps:
         /api-uaa/js/**,
         /login.html,
         /user/login,
-        /api-uaa/tokens/key,
-        /api-uaa/tokens/getUserInfoByToken,
-        /api-user/forgetPwSetOrRegister/*,
-        /api-seabox/seabox/ranger/login,
-        /sdo/**,
         /actuator/**,
         /api-route/**,
-        /api-user/sendValidationEmail,
-        /api-user/resetPassword,
         /favicon.ico,
         /api-user/doc.html,
         /api-user/swagger-resources,
         /api-user/v2/api-docs/**,
         /api-user/webjars/**,
         /api-uaa/system/auth/social-auth-redirect
+        /api-user/system/tenant/get-id-by-name
         
     auth:
       encodeKey: sdps842651379000
